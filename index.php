@@ -173,7 +173,7 @@ function generateItems() {
 				http://www.planetminecraft.com/member/nectoxbt/<br>
 			</main>
 		</section>
-		<p class="footnote">This piece of text is dedicated god, aka Elon Musk</p>
+		<p class="footnote">This piece of text is dedicated to Elon Musk</p>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://apis.google.com/js/api.js"></script>
