@@ -86,15 +86,15 @@ function generateItems() {
 
 		<section class="dev">
 			<header class="flex-row">
-				<div class="text l">
-					<p class="title">
-						<a target="_blank" href="https://github.com/SpectralKH">Dev</a>
-					</p>
-					<p class="description">I know HTML5, SASS, JS, jQuery, PHP and MySQL. It's a start.</p>
-				</div>
 				<a target="_blank" href="https://github.com/SpectralKH">
 					<img src="/cdn/logos/project/github.png">
 				</a>
+                <div class="text r">
+                    <p class="title">
+                        <a target="_blank" href="https://github.com/SpectralKH">Dev</a>
+                    </p>
+                    <p class="description">I know HTML5, SASS, JS, jQuery, PHP and MySQL. It's a start.</p>
+                </div>
 			</header>
 			<main class="adjust-height flex-row">
                 <!-- CANVAS EXPERIMENTS -->
@@ -138,15 +138,15 @@ function generateItems() {
 
 		<section class="video adjust-height">
 			<header class="flex-row">
-				<a target="_blank" href="https://www.youtube.com/user/SpectralKH">
-					<img src="/cdn/logos/project/youtube.png">
-				</a>
-				<div class="text r">
+				<div class="text l">
 					<p class="title">
 						<a target="_blank" href="https://www.youtube.com/user/SpectralKH">Video</a>
 					</p>
 					<p class="description">My personal YouTube channel has audio visualizers, animations, sketches etc, made in After Effects.</p>
 				</div>
+                <a target="_blank" href="https://www.youtube.com/user/SpectralKH">
+                    <img src="/cdn/logos/project/youtube.png">
+                </a>
 			</header>
 			<main class="adjust-height flex-row">
 				<?= generateItems() ?>
