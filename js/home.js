@@ -55,17 +55,44 @@ function start() {
 			playlistId: "UUy6jcAF6fZGttRvihyQixbA",
 			maxResults: 8
 		});
-		// Perform API request, process response
-		requestVideo.execute(function(response) {
-			var nthChild, arrayLength = response.result.items.length;
-			for (var i = 0; i < arrayLength; i++) {
-				nthChild = i+1;
-				$("section.video .item:nth-child("+nthChild+") div.img")
-					.attr("style", 'background-image: url("'+response.result.items[i].snippet.thumbnails.high.url+'")')
-					.siblings(".title").html(response.result.items[i].snippet.title)
-					.parent().attr("href", "https://www.youtube.com/watch?v="+response.result.items[i].snippet.resourceId.videoId);
-			}
+		var requestCommissions = gapi.client.youtube.playlistItems.list({
+			part: "snippet",
+			playlistId: "PL84-DNDSU8p5WP6jA7hvOCV9dIKBNjdCS",
+			maxResults: 8
 		});
+		// Perform API request, process response
+        var videoResponse, commissionResponse;
+		requestVideo.execute(function(response) {
+            videoResponse = response;
+            processResponses();
+		});
+        requestCommissions.execute(function(response) {
+            commissionResponse = response;
+            processResponses();
+		});
+        function processResponses() {
+            if (videoResponse && commissionResponse) {
+                console.log(commissionResponse);
+                resultItems = videoResponse.result.items.concat(commissionResponse.result.items);
+                console.log(resultItems);
+                resultItems.sort(function(a, b) {
+                    var dateA = new Date(a.snippet.publishedAt);
+                    var dateB = new Date(b.snippet.publishedAt);
+                    return dateB - dateA; // sort by date ascending
+                });
+                resultItems = resultItems.splice(0, 8);
+                console.log(resultItems);
+
+                var nthChild;
+                for (var i = 0; i < resultItems.length; i++) {
+                	nthChild = i+1;
+                	$("section.video .item:nth-child("+nthChild+") div.img")
+                		.attr("style", 'background-image: url("'+resultItems[i].snippet.thumbnails.high.url+'")')
+                		.siblings(".title").html(resultItems[i].snippet.title)
+                		.parent().attr("href", "https://www.youtube.com/watch?v="+resultItems[i].snippet.resourceId.videoId);
+                }
+            }
+        }
 
 	});
 }
@@ -96,7 +123,7 @@ function resizeStuff() {
 resizeStuff();
 $(window).resize(resizeStuff);
 
-// Image hover z-index fix
+// Image hover overlap/z-index fix
 var high = 3;
 $(".item").hover(function() {
 	$(this).css({"z-index": high});

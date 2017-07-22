@@ -36,10 +36,10 @@ function generateItems() {
 						<input readonly class="popup-input" value="KH | Synctan &amp; Lacuna#6425"></input>
 					</div>
 				</a>
-				<a target="_blank" class="facebook" title="Facebook"		href="https://www.facebook.com/SpectralKH"></a>
-				<a target="_blank" class="youtube" title="YouTube"			href="https://youtube.com/SpectralKH"></a>
-				<a target="_blank" class="soundcloud" title="SoundCloud"	href="https://soundcloud.com/SpectralKH"></a>
-				<a target="_blank" class="github" title="GitHub"			href="https://github.com/SpectralKH"></a>
+                <a target="_blank" class="youtube" title="YouTube"			href="https://youtube.com/SpectralKH"></a>
+                <a target="_blank" class="soundcloud" title="SoundCloud"	href="https://soundcloud.com/SpectralKH"></a>
+                <a target="_blank" class="github" title="GitHub"			href="https://github.com/SpectralKH"></a>
+                <a target="_blank" class="facebook" title="Facebook"		href="https://www.facebook.com/SpectralKH"></a>
 				<a target="_blank" class="instagram" title="Instagram"		href="https://www.instagram.com/spckh/"></a>
 				<!-- <a target="_blank" class="email" title="email"				href="mailto:kasperkh.kh@gmail.com"></a> -->
 				<a class="email" title="Email">
@@ -80,23 +80,6 @@ function generateItems() {
 				</a>
 			</header>
 			<main class="flex-row">
-				<?= generateItems() ?>
-			</main>
-		</section>
-
-		<section class="trap-united adjust-height">
-			<header class="flex-row">
-				<a target="_blank" href="https://www.youtube.com/TrapUnited">
-					<img src="/cdn/logos/project/trap-united.png">
-				</a>
-				<div class="text r">
-					<p class="title">
-						<a target="_blank" href="https://www.youtube.com/TrapUnited">Trap United</a>
-					</p>
-					<p class="description">Another music curation channel, this one with daily trap music uploads, and part of to the "United" channel network.</p>
-				</div>
-			</header>
-			<main class="adjust-height flex-row">
 				<?= generateItems() ?>
 			</main>
 		</section>
@@ -162,7 +145,24 @@ function generateItems() {
 					<p class="title">
 						<a target="_blank" href="https://www.youtube.com/user/SpectralKH">Video</a>
 					</p>
-					<p class="description">I'm experienced with After Effects and Final Cut. My personal YouTube channel has audio visualizers, animations, sketches etc.</p>
+					<p class="description">My personal YouTube channel has audio visualizers, animations, sketches etc, made in After Effects.</p>
+				</div>
+			</header>
+			<main class="adjust-height flex-row">
+				<?= generateItems() ?>
+			</main>
+		</section>
+
+        <section class="trap-united adjust-height">
+			<header class="flex-row">
+				<a target="_blank" href="https://www.youtube.com/TrapUnited">
+					<img src="/cdn/logos/project/trap-united.png">
+				</a>
+				<div class="text r">
+					<p class="title">
+						<a target="_blank" href="https://www.youtube.com/TrapUnited">Trap United</a>
+					</p>
+					<p class="description">A trap music curation channel I used to manage.</p>
 				</div>
 			</header>
 			<main class="adjust-height flex-row">
