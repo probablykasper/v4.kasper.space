@@ -59,7 +59,7 @@ function generateItems() {
 					<p class="title">
 						<a target="_blank" href="https://www.youtube.com/Synctan">Synctan</a>
 					</p>
-					<p class="description">A YouTube channel where I curate all kinds of music, every Monday, Wednesday and Friday.</p>
+					<p class="description">A YouTube channel where I curate all kinds of music I like.</p>
 				</div>
 			</header>
 			<main class="adjust-height flex-row">
@@ -73,7 +73,7 @@ function generateItems() {
 					<p class="title">
 						<a target="_blank" href="https://soundcloud.com/LacunaRecords">Lacuna Records</a>
 					</p>
-					<p class="description">I am a co-owner of this independent indie record label, with a nice community behind it.</p>
+					<p class="description">I am a co-owner of this independent indie record label.</p>
 				</div>
 				<a target="_blank" href="https://soundcloud.com/LacunaRecords">
 					<img src="/cdn/logos/project/lacuna.png">
