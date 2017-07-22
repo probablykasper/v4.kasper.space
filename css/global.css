@@ -177,8 +177,8 @@ div.bottom section.dev .item div.links { z-index: 987654; opacity: 0; position: 
 
 div.bottom section.dev .item div.links a { width: 24px; height: 24px; padding: 4px; background-repeat: no-repeat; background-position: center; float: right; }
 
-div.bottom section.dev .item div.links .github-link { background-size: 18px; background-image: url("/cdn/logos/project/github.png"); padding-right: 2px; }
+div.bottom section.dev .item div.links .github-link { background-size: 18px; background-image: url("/cdn/logos/project/github.png"); transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
 
-div.bottom section.dev .item div.links .link { background-size: 16px; background-image: url("/cdn/open-in-new.png"); padding-left: 2px; }
+div.bottom section.dev .item div.links .github-link:hover { transform: scale(1.25); }
 
 div.bottom .footnote { color: white; transform: translateY(-200%); }

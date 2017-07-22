@@ -14,6 +14,7 @@ $shadow-items: $shadow-lv5
 
 $transition: .15s cubic-bezier(0.4, 0.0, 0.2, 1)
 $transition-item: .45s cubic-bezier(0.23, 1, 0.32, 1)
+$transition-dev-links: .3s cubic-bezier(0.23, 1, 0.32, 1)
 $transition-fade: .15s cubic-bezier(0.23, 1, 0.32, 1)
 
 $c-white: #F6F1F1
@@ -374,11 +375,13 @@ div.bottom
                 .github-link
                     background-size: 18px
                     background-image: url("/cdn/logos/project/github.png")
-                    padding-right: 2px
-                .link
-                    background-size: 16px
-                    background-image: url("/cdn/open-in-new.png")
-                    padding-left: 2px
+                    transition: transform $transition-dev-links
+                    &:hover
+                        transform: scale(1.25)
+                // .link
+                //     background-size: 16px
+                //     background-image: url("/cdn/open-in-new.png")
+                //     padding-left: 2px
 
     .footnote
         color: white
