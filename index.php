@@ -114,25 +114,41 @@ function generateItems() {
 				</a>
 			</header>
 			<main class="adjust-height flex-row">
-				<div target="_blank" class="item">
-					<div class="overlay"></div>
-					<p class="title">Nelation</p>
-					<p class="description">Website for the record label Nelation.</p>
-					<div class="links">
-						<a class="link" href=""></a>
-						<a class="github-link" href=""></a>
-					</div>
-					<div class="img"></div>
-				</div>
-				<div target="_blank" class="item">
-					<div class="overlay"></div>
+                <!-- CANVAS EXPERIMENTS -->
+                <div class="item">
+                    <a target="_blank" href="https://spectralkh.github.io/canvas-experiments/">
+                        <div class="overlay" title="Just me learning to use HTML canvas"></div>
+                    </a>
+                    <p class="title">HTML5 Canvas Experiments</p>
+                    <div class="links">
+                        <!-- <a class="link" href="https://spectralkh.github.io/canvas-experiments/"></a> -->
+                        <a target="_blank" class="github-link" href="https://github.com/SpectralKH/canvas-experiments"></a>
+                    </div>
+                        <img class="img" src="/cdn/dev-screenshots/canvas.png"></img>
+                </div>
+                <!-- LIMP -->
+                <div class="item">
+                    <a target="_blank" href="http://limp.henningsen.se/">
+                        <div class="overlay" title="It's supposed to be a programming language built in JavaScript"></div>
+                    </a>
+                    <p class="title">limp</p>
+                    <div class="links">
+                        <!-- <a class="link" href="http://limp.henningsen.se/"></a> -->
+                        <a target="_blank" class="github-link" href="https://github.com/SpectralKH/limp"></a>
+                    </div>
+                        <img class="img" src="/cdn/dev-screenshots/limp.png"></img>
+                </div>
+                <!-- PERSONAL WEBSITE -->
+				<div class="item">
+                    <a target="_blank" href="http://kh.henningsen.se/">
+                        <div class="overlay" title="Self explanatory..."></div>
+                    </a>
 					<p class="title">Personal Website</p>
-					<p class="description">I think it's self explanatory</p>
 					<div class="links">
-						<a class="link" href="http://kh.henningsen.se/"></a>
-						<a class="github-link" href=""></a>
+						<!-- <a class="link" href="http://kh.henningsen.se/"></a> -->
+						<a target="_blank" class="github-link" href="https://github.com/SpectralKH/personal-website"></a>
 					</div>
-					<div class="img"></div>
+                        <img class="img" src="/cdn/dev-screenshots/personal-website.png"></img>
 				</div>
 			</main>
 		</section>

@@ -169,9 +169,7 @@ div.bottom section.lacuna .item { width: calc(100% / 8); }
 
 div.bottom section.dev .item { background-color: #20202A; }
 
-div.bottom section.dev .item .title { color: white; opacity: 1; width: calc(100% - 26px); }
-
-div.bottom section.dev .item .description { color: #E1E5E9; font-size: 15px; z-index: 987654; position: absolute; bottom: 0px; -webkit-backface-visibility: hidden; }
+div.bottom section.dev .item .title { color: white; width: calc(100% - 26px); }
 
 div.bottom section.dev .item:hover .links { opacity: 1; }
 
