@@ -27,12 +27,13 @@ function start() {
 
 		// TRAP UNITED
 		// API request details
-		var requestTrapUnited = gapi.client.youtube.playlistItems.list({
+		var requestTrapUnited = gapi.client.youtube.search.list({
 			part: "snippet",
-			playlistId: "UU0kHs8aHGQEtQODjt9XHjfQ",
+            channelId: "UC0kHs8aHGQEtQODjt9XHjfQ",
+            type: "video",
+            publishedBefore: "2017-05-14T00:00:00Z",
+            order: "date",
 			maxResults: 8,
-            videoId: "h9YZ_-0aZdo B1bnPFRHigQ"
-            // videoId: "h9YZ_-0aZdo,B1bnPFRHigQ,gz4sub-q3iQ,Ep6LSR5-fhQ,BEznmbl8_28"
 		});
 		// Perform API request, process response
 		requestTrapUnited.execute(function(response) {
@@ -40,7 +41,7 @@ function start() {
 			for (var i = 0; i < arrayLength; i++) {
 				nthChild = i+1;
 				$("section.trap-united .item:nth-child("+nthChild+")")
-					.attr("href", "https://www.youtube.com/watch?v="+response.result.items[i].snippet.resourceId.videoId);
+					.attr("href", "https://www.youtube.com/watch?v="+response.result.items[i].id.videoId);
 				$("section.trap-united .item:nth-child("+nthChild+") div.img")
 					.attr("style", 'background-image: url("'+response.result.items[i].snippet.thumbnails.high.url+'")')
 					.siblings(".title").html(response.result.items[i].snippet.title);

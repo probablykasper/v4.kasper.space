@@ -107,7 +107,7 @@ function generateItems() {
 					<p class="title">
 						<a target="_blank" href="https://github.com/SpectralKH">Dev</a>
 					</p>
-					<p class="description">HTML5, Sass, JS, jQuery, PHP, MySQL. It's a start.</p>
+					<p class="description">I know HTML5, SASS, JS, jQuery, PHP and MySQL. It's a start.</p>
 				</div>
 				<a target="_blank" href="https://github.com/SpectralKH">
 					<img src="/cdn/logos/project/github.png">
@@ -154,7 +154,7 @@ function generateItems() {
 			</main>
 		</section>
 
-		<section class="minecraft">
+		<!-- <section class="minecraft">
 			<header class="flex-row">
 				<div class="text l">
 					<p class="title">
@@ -172,7 +172,7 @@ function generateItems() {
 				http://www.planetminecraft.com/mod/spectralguns/<br>
 				http://www.planetminecraft.com/member/nectoxbt/<br>
 			</main>
-		</section>
+		</section> -->
 		<p class="footnote">This piece of text is dedicated to Elon Musk</p>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
