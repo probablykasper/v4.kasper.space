@@ -18,7 +18,7 @@ function generateItems() {
 <body>
 	<div class="top">
 		<header class="page">
-			<img src="/cdn/logos/kh-transparent.png">
+			<img src="/cdn/logos/kh-logo-aevi.png">
 			<p class="one">Hi.</p>
 		</header>
 		<p class="two">I make things.</p>
