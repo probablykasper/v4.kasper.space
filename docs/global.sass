@@ -150,3 +150,14 @@ section.lacuna
             display: block
             width: 200px
             height: 200px
+.canvas-container
+    position: absolute
+    top: 0px
+    left: 0px
+    z-index: -1
+    transform: rotate(180deg)
+    transition: $transition-100 all
+    &.hidden
+        opacity: 0
+    canvas
+        display: block
