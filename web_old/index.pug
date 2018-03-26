@@ -1,0 +1,204 @@
+```.pug //output:index.html
+html
+    head
+        title KH
+        link(href="https://fonts.googleapis.com/css?family=Rubik:300,400,500", rel="stylesheet")
+        // css
+        link(rel="stylesheet" type="text/css" href="global.css")
+        // favicon
+        link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png?v=YAoOnmWBYg")
+        link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png?v=YAoOnmWBYg")
+        link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png?v=YAoOnmWBYg")
+        link(rel="manifest", href="/site.webmanifest?v=YAoOnmWBYg")
+        link(rel="mask-icon", href="/safari-pinned-tab.svg?v=YAoOnmWBYg", color="#5bbad5")
+        link(rel="shortcut icon", href="/favicon.ico?v=YAoOnmWBYg")
+        meta(name="msapplication-TileColor", content="#ffffff")
+        meta(name="theme-color", content="#ffffff")
+body
+    .top
+        header.page
+            img(src='static/logos/kh-logo-aevi.png')
+            p.one Hi.
+        p.two I make things.
+        section.projects.flex-row
+            .chevron
+            p.three Let me show you.
+    .bottom
+        .spacer
+            .personal-links.flex-row
+                a.twitter(target='_blank', title='Twitter', href='https://twitter.com/SpectralKH')
+                a.discord(title='Discord')
+                    .popup.hidden
+                        input.popup-input(readonly='', value='KH | Synctan & Lacuna#6425')
+                a.youtube(target='_blank', title='YouTube', href='https://youtube.com/SpectralKH')
+                a.soundcloud(target='_blank', title='SoundCloud', href='https://soundcloud.com/SpectralKH')
+                a.github(target='_blank', title='GitHub', href='https://github.com/SpectralKH')
+                a.facebook(target='_blank', title='Facebook', href='https://www.facebook.com/SpectralKH')
+                a.instagram(target='_blank', title='Instagram', href='https://www.instagram.com/spckh/')
+                // <a target="_blank" class="email" title="email"				href="mailto:kasperkh.kh@gmail.com"></a>
+                a.email(title='Email')
+                    .popup.hidden
+                        input.popup-input(readonly='', value='kasperkh.kh@gmail.com')
+        section.synctan.adjust-height
+            header.flex-row
+                a(target='_blank', href='https://www.youtube.com/Synctan')
+                    img(src='static/logos/project/synctan.png')
+                .text.r
+                    p.title
+                        a(target='_blank', href='https://www.youtube.com/Synctan') Synctan
+                    p.description A YouTube channel where I curate all kinds of music I like.
+            main.adjust-height.flex-row
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+        section.lacuna
+            header.flex-row
+                .text.l
+                    p.title
+                        a(target='_blank', href='https://soundcloud.com/LacunaRecords') Lacuna Records
+                    p.description I am a co-owner of this independent indie record label.
+                a(target='_blank', href='https://soundcloud.com/LacunaRecords')
+                    img(src='static/logos/project/lacuna.png')
+            main.flex-row
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+        section.dev
+            header.flex-row
+                a(target='_blank', href='https://github.com/SpectralKH')
+                    img(src='static/logos/project/github.png')
+                .text.r
+                    p.title
+                        a(target='_blank', href='https://github.com/SpectralKH') Dev
+                    p.description Some fun projects I've done.
+            main.adjust-height.flex-row
+                // CANVAS EXPERIMENTS
+                .item
+                    a(target='_blank', href='http://canvas.kasp.io/')
+                        .overlay(title='Just me learning to use HTML canvas')
+                    p.title HTML5 Canvas Experiments
+                    .links
+                        a.github-link(target='_blank', href='https://github.com/SpectralKH/canvas-experiments')
+                    img.img(src='static/dev-screenshots/canvas.png')
+                // LIMP
+                .item
+                    a(target='_blank', href='http://limp.kasp.io/')
+                        .overlay(title="It's supposed to be a programming language built in JavaScript")
+                    p.title limp
+                    .links
+                        a.github-link(target='_blank', href='https://github.com/SpectralKH/limp')
+                    img.img(src='static/dev-screenshots/limp.png')
+                // PERSONAL WEBSITE
+                .item
+                    a(target='_blank', href='http://kasp.io/')
+                        .overlay(title='Self explanatory...')
+                    p.title Personal Website
+                    .links
+                        a.github-link(target='_blank', href='https://github.com/SpectralKH/kasp.io')
+                    img.img(src='static/dev-screenshots/kaspio.png')
+        section.video.adjust-height
+            header.flex-row
+                .text.l
+                    p.title
+                        a(target='_blank', href='https://www.youtube.com/user/SpectralKH') Video
+                    p.description
+                        | My personal YouTube channel has audio visualizers, animations, sketches etc, made in After Effects.
+                a(target='_blank', href='https://www.youtube.com/user/SpectralKH')
+                    img(src='static/logos/project/youtube.png')
+            main.adjust-height.flex-row
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+                a.item(target='_blank')
+                    .overlay
+                    p.title
+                    .img
+        p.footnote This piece of text is dedicated to Elon Musk
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://apis.google.com/js/api.js')
+    script(src='https://connect.soundcloud.com/sdk/sdk-3.1.2.js')
+    script(src='js/smoothscroll.js')
+    script(src='js/home.js')
