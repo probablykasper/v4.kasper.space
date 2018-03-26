@@ -1,3 +1,4 @@
+// minOnSave: true, minifier: uglify-js
 var bgColor = 0xffffff
 /**
  * @author mrdoob / http://mrdoob.com/
