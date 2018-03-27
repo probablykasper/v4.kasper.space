@@ -3,6 +3,7 @@ var canvasHeight = 400;
 var SEPARATION = 100;
 var AMOUNTX = 80;
 var AMOUNTY = 40;
+var particleColor = "#3f3f3f";
 
 var container;
 var camera, scene, renderer;
@@ -37,7 +38,7 @@ function init() {
 	var PI2 = Math.PI * 2;
 	var material = new THREE.SpriteCanvasMaterial( {
 
-		color: "#000000",
+		color: particleColor,
 		program: function ( context ) {
 
 			context.beginPath();
