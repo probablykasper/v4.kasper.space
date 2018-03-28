@@ -3,9 +3,12 @@ doctype html
 html
     head
         title KH
+        // font
         link(href="https://fonts.googleapis.com/css?family=Rubik:300,400,500", rel="stylesheet")
         // css
         link(rel="stylesheet" type="text/css" href="global.css")
+        // stuff
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0")
         // favicon
         link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png?v=YAoOnmWBYg")
         link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png?v=YAoOnmWBYg")
@@ -16,8 +19,7 @@ html
         meta(name="msapplication-TileColor", content="#ffffff")
         meta(name="theme-color", content="#ffffff")
     body
-        .top
-            img.logo(src="static/kh-logo.png")
+        img.logo(src="static/kh-logo.png")
         .social-media
             a.twitter(target="_blank" title="Twitter" href="https://twitter.com/SpectralKH")
             a.discord.has-popup(title="Discord")
