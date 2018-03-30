@@ -121,7 +121,7 @@ var maxResults = 6;
             var url = tracks[i].permalink_url;
             var img = tracks[i].artwork_url.replace("large", "t300x300");
             var item = document.querySelector("section.lacuna .thumbnails a.item:nth-child("+(i+1)+")");
-            item.setAttribute("href", "https://www.youtube.com/watch?v="+url);
+            item.setAttribute("href", url);
             item.querySelector("img").setAttribute("src", img);
         }
         document.querySelector("section.lacuna").classList.remove("hidden");
