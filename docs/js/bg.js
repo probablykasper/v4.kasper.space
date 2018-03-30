@@ -12,7 +12,19 @@ var particles, particle, count = 0;
 
 var mouseX = 0, mouseY = 0;
 
-var windowHalfX = $(".canvas-container").width() / 2;
+container = document.createElement( 'div' );
+container.classList.add("canvas-container");
+container.classList.add("hidden");
+setTimeout(function() {
+    container.classList.remove("hidden");
+}, 1000);
+document.body.appendChild( container );
+
+function getCanvasContainerWidth() {
+    return document.querySelector(".canvas-container").clientWidth;
+}
+
+var windowHalfX = getCanvasContainerWidth() / 2;
 var windowHalfY = canvasHeight / 2;
 
 init();
@@ -20,15 +32,7 @@ animate();
 
 function init() {
 
-	container = document.createElement( 'div' );
-    container.classList.add("canvas-container");
-    container.classList.add("hidden");
-    setTimeout(function() {
-        container.classList.remove("hidden");
-    }, 1000);
-	document.body.appendChild( container );
-
-	camera = new THREE.PerspectiveCamera( 75, $(".canvas-container").width() / canvasHeight, 1, 10000 );
+	camera = new THREE.PerspectiveCamera( 75, getCanvasContainerWidth() / canvasHeight, 1, 10000 );
 	camera.position.z = 10000;
 
 	scene = new THREE.Scene();
@@ -66,7 +70,7 @@ function init() {
 
 	renderer = new THREE.CanvasRenderer();
 	renderer.setPixelRatio( window.devicePixelRatio );
-	renderer.setSize( $(".canvas-container").width(), canvasHeight );
+	renderer.setSize( getCanvasContainerWidth(), canvasHeight );
 	container.appendChild( renderer.domElement );
 
 
@@ -78,7 +82,7 @@ function init() {
 }
 
 function onWindowResize() {
-    canvasContainerWidth = $(".canvas-container").width();
+    canvasContainerWidth = getCanvasContainerWidth();
 
 	windowHalfX = canvasContainerWidth / 2;
 	windowHalfY = canvasHeight / 2;

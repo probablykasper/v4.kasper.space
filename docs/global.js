@@ -37,6 +37,7 @@ window.xhr = (reqContent, url, options = {}, callback) => {
         // resolve(5);
     });
 }
+
 var YTapiKey = "AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090";
 var maxResults = 6;
 
@@ -106,26 +107,24 @@ var maxResults = 6;
 
 })();
 
-$(document).ready(() => {
-
 (function Lacuna() {
 
     // Lacuna
     var clientID = "6ibYZTmF5qnpvp88S9V3werVrC18WCdC";
     var url = "http://api.soundcloud.com/users/247370320/tracks"
-        +"?limit="+maxResults
-        +"&client_id="+clientID;
+    +"?limit="+maxResults
+    +"&client_id="+clientID;
     xhr(null, url, {type: "GET"}).then((tracks) => {
         console.log("==--==--==--> SoundCloud Lacuna");
         console.log(tracks);
         for (var i = 0; i < tracks.length; i++) {
             var url = tracks[i].permalink_url;
             var img = tracks[i].artwork_url.replace("large", "t300x300");
-            var item = $("section.lacuna .thumbnails a.item:nth-child("+(i+1)+")");
-            item.attr("href", url);
-            item.find("img").attr("src", img);
+            var item = document.querySelector("section.lacuna .thumbnails a.item:nth-child("+(i+1)+")");
+            item.setAttribute("href", "https://www.youtube.com/watch?v="+url);
+            item.querySelector("img").setAttribute("src", img);
         }
-        $("section.lacuna").removeClass("hidden");
+        document.querySelector("section.lacuna").classList.remove("hidden");
     }, (err) => {
         throw Error("Could not fetch SoundCloud tracks");
         console.log(err);
@@ -134,22 +133,29 @@ $(document).ready(() => {
 })();
 
 // discord/email popups
-$(document).on("click", function(e) {
-
-    if ($(e.target).hasClass("has-popup") || $(e.target).hasClass("popup")) {
-        if ($(e.target).find("input").hasClass("hidden")) {
-            // hidden
-            $("a.has-popup input").addClass("hidden");
-            $(e.target).find("input").select().removeClass("hidden");
-        } else {
-            // not hidden
-            $(e.target).find("input").addClass("hidden");
+document.addEventListener("click", function(e) {
+    function hideAllInputs() {
+        var inputs = document.querySelectorAll("a.has-popup input");
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].classList.add("hidden");
+        }
+    }
+    var hasClassHasPopup = e.target.classList.contains("has-popup");
+    var hasClassPopup = e.target.classList.contains("popup");
+    if (hasClassHasPopup || hasClassPopup) {
+        var input = e.target.querySelector("input");
+        if (e.target.classList.contains("popup")) input = e.target;
+        var clickedInput = e.target.classList.contains("popup");
+        var inputIsHidden = input.classList.contains("hidden");
+        if (inputIsHidden) {
+            hideAllInputs();
+            input.select();
+            input.classList.remove("hidden");
+        } else if (!clickedInput) {
+            input.classList.add("hidden");
         }
     } else {
         // clicked anywhere
-        $("a.has-popup input").addClass("hidden");
+        hideAllInputs();
     }
-
-});
-
 });
