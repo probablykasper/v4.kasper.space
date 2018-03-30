@@ -111,7 +111,7 @@ var maxResults = 6;
 
     // Lacuna
     var clientID = "6ibYZTmF5qnpvp88S9V3werVrC18WCdC";
-    var url = "http://api.soundcloud.com/users/247370320/tracks"
+    var url = "https://api.soundcloud.com/users/247370320/tracks"
     +"?limit="+maxResults
     +"&client_id="+clientID;
     xhr(null, url, {type: "GET"}).then((tracks) => {
