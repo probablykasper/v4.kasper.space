@@ -119,7 +119,7 @@ var YTapiKey = "AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090";
     xhr(null, url, {type: "GET"}).then((tracks) => {
         console.log("==--==--==--> SoundCloud Lacuna");
         console.log(tracks);
-        for (var i = 0; i < tracks.length; i++) {
+        for (var i = 0; i < 6; i++) {
             var url = tracks[i].permalink_url;
             var img = tracks[i].artwork_url.replace("large", "t300x300");
             var item = document.querySelector("section.lacuna .thumbnails a.item:nth-child("+(i+1)+")");
