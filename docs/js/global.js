@@ -39,9 +39,9 @@ window.xhr = (reqContent, url, options = {}, callback) => {
 }
 
 var YTapiKey = "AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090";
-var maxResults = 6;
 
 (function Video() {
+    var maxResults = 6;
 
     var url = "https://www.googleapis.com/youtube/v3/playlistItems"
     +"?key="+YTapiKey
@@ -81,6 +81,7 @@ var maxResults = 6;
 })();
 
 (function Synctan() {
+    var maxResults = 6;
 
     var url = "https://www.googleapis.com/youtube/v3/playlistItems"
     +"?key="+YTapiKey
@@ -108,6 +109,7 @@ var maxResults = 6;
 })();
 
 (function Lacuna() {
+    var maxResults = 8;
 
     // Lacuna
     var clientID = "6ibYZTmF5qnpvp88S9V3werVrC18WCdC";
