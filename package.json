@@ -2,7 +2,7 @@
   "name": "kasp.io",
   "main": "index.js",
   "scripts": {
-    "html": "gulp html"
+    "publish": "gh-pages --dist build --branch gh-pages --no-push"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
