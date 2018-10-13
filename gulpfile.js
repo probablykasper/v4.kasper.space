@@ -118,16 +118,16 @@ gulp.task('server', () => {
     })
 });
 
+gulp.task('watch', gulp.series('clean', 'css', gulp.parallel('css:watch', 'html:watch', 'js:watch')));
+gulp.task('build', gulp.series('clean', 'css', 'html', 'js'));
+gulp.task('dev', gulp.parallel('watch', 'server'));
+gulp.task('default', gulp.task('dev'));
+
 const exec = require('child_process').exec;
-gulp.task('deploy', (cb) => {
+gulp.task('deploy', gulp.series('build', (cb) => {
     exec('git subtree push --prefix build origin gh-pages', (err, stdout, stderr) => {
         if (stdout) console.log(stdout);
         if (stderr) console.log(stderr);
         cb(err)
     })
-})
-
-gulp.task('watch', gulp.series('clean', 'css', gulp.parallel('css:watch', 'html:watch', 'js:watch')));
-gulp.task('build', gulp.series('clean', 'css', 'html', 'js'));
-gulp.task('dev', gulp.parallel('watch', 'server'));
-gulp.task('default', gulp.task('dev'));
+}))

@@ -12,4 +12,4 @@ My personal website. It uses the [YouTube Data API](https://developers.google.co
 - `gulp watch`: Build and watch for changes.
 - `gulp server`: Starts dev server on localhost:3000.
 - `gulp dev` or just `gulp`: In case you don't want to type `gulp watch server`.
-- `gulp deploy`: Deploy to GitHub Pages (by copying `/build` into the gh-pages branch).
+- `gulp deploy`: Build and deploy to GitHub Pages (by copying `/build` into the gh-pages branch).
