@@ -1,5 +1,90 @@
+//output:index.html
 doctype html
 html
     head
-        link(rel='stylesheet' href='woah.css')
+        title KH
+        // font
+        link(href="https://fonts.googleapis.com/css?family=Rubik:400", rel="stylesheet")
+        // css
+        link(rel="stylesheet" type="text/css" href="global.css")
+        // stuff
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0")
+        // favicon
+        link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png?v=YAoOnmWBYg")
+        link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png?v=YAoOnmWBYg")
+        link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png?v=YAoOnmWBYg")
+        link(rel="manifest", href="/site.webmanifest?v=YAoOnmWBYg")
+        link(rel="mask-icon", href="/safari-pinned-tab.svg?v=YAoOnmWBYg", color="#5bbad5")
+        link(rel="shortcut icon", href="/favicon.ico?v=YAoOnmWBYg")
+        meta(name="msapplication-TileColor", content="#ffffff")
+        meta(name="theme-color", content="#ffffff")
     body
+        img.logo(src="static/kh-logo.png")
+        .social-media
+            a.twitter(target="_blank" title="Twitter" href="https://twitter.com/SpectralKH")
+            a.discord.has-popup(title="Discord")
+                input.popup.hidden(value="KH#6425")
+            a.youtube(target="_blank" title="YouTube" href="https://youtube.com/SpectralKH")
+            a.instagram(target="_blank" title="Instagram" href="https://www.instagram.com/spckh/")
+            a.github(target="_blank" title="GitHub" href="https://github.com/SpectralKH")
+            a.facebook(target="_blank" title="Facebook" href="https://www.facebook.com/SpectralKH")
+            a.email.has-popup(title="Email")
+                input.popup.hidden(value="kasperkh.kh@gmail.com")
+            a.soundcloud(target="_blank" title="SoundCloud" href="https://soundcloud.com/SpectralKH")
+        section.video.hidden
+            .header
+                p.title Video
+                p.description I make some pretty cool videos. I'd watch them.
+            .thumbnails
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+        section.synctan.hidden
+            .header
+                p.title Synctan
+                p.description A YouTube channel where I curate all kinds of music I like.
+            .thumbnails
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+        section.lacuna.hidden
+            .header
+                p.title Lacuna
+                p.description I am a co-owner of this independent indie record label.
+            .thumbnails
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+                a.item(target="_blank")
+                    img
+        //- script
+        //-     include global.js
+        script(src="js/global.js")
+        script(src='js/three.min.js')
+        script(src="js/canvas-renderer-and-projector.min.js")
+        script(src="js/bg.min.js")
