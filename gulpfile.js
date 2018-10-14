@@ -132,14 +132,25 @@ gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch',
 gulp.task('dev', gulp.parallel('watch', 'server'));
 gulp.task('default', gulp.task('dev'));
 
-const exec = require('child_process').exec;
-gulp.task('deploy', gulp.series('build', (cb) => {
-    del.sync(deploy);
-    gulp.src('dest/**')
-        .pipe(gulp.dest(deploy))
-    exec('git commit -m "Deploy"', (err, stdout, stderr) => {
-        if (stdout) console.log(stdout);
-        if (stderr) console.log(stderr);
-        cb(err)
+const simpleGit = require('simple-git')();
+gulp.task('deploy', () => {
+    return new Promise((resolve, reject) => {
+        gulp.series('build');
+        del.sync(deploy);
+        gulp.src('dest/**')
+            .pipe(gulp.dest(deploy))
+            .on('end', () => {
+                
+                simpleGit.commit('Deploy', deploy, {}, (err, {summary}) => {
+                    if (summary.changes == 0 && summary.insertions == 0 && summary.deletions == 0) {
+                        console.log('No changes to commit');
+                    } else {
+                        console.log('Deployed');
+                    }
+                    if (err) reject(err);
+                    else resolve();
+                })
+                
+            })
     });
-}))
+})
