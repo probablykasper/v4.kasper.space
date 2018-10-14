@@ -132,11 +132,11 @@ gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch',
 gulp.task('dev', gulp.parallel('watch', 'server'));
 gulp.task('default', gulp.task('dev'));
 
-const ncp = reqiore('ncp').ncp;
+const ncp = require('ncp').ncp;
 gulp.task('deploy', gulp.series('build', (cb) => {
     del(deploy)
     gulp.src('dest/**')
-        .pipe(deploy)
+        .pipe(gulp.dest(deploy))
     exec('git commit -m "Deploy"', (err, stdout, stderr) => {
         if (stdout) console.log(stdout);
         if (stderr) console.log(stderr);
