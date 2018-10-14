@@ -2,14 +2,13 @@ src = 'src'
 dest = 'build';
 deploy = 'docs';
 
-deploySrc = 'dest/'
 cssSrc = 'src/**/*.{sass,scss,css}';
 htmlSrc = 'src/**/*.{pug,html}';
-jsSrc = 'src/**/*.js';
+jsSrc = ['src/**/*.js', '!src/lib/**'];
 
 // Files that will be copied and updated and deleted over to dest.
 // Note that if you run moveFiles or moveFiles:watch by itself, files won't be deleted.
-assetSrc = 'src/**/*.!(*sass|*scss|*css|*pug|*html|*js)';
+assetSrc = ['src/**/*.!(*sass|*scss|*css|*pug|*html|*js)', 'src/lib/**'];
 
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
