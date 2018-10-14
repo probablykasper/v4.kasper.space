@@ -1,0 +1,16 @@
+html {
+  background: blue; }
+
+::-webkit-input-placeholder {
+  color: gray; }
+
+:-ms-input-placeholder {
+  color: gray; }
+
+::-ms-input-placeholder {
+  color: gray; }
+
+::placeholder {
+  color: gray; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndvYWguc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFnQixFQUNuQjs7QUFFRDtFQUNJLFlBQVcsRUFDZDs7QUFFRDtFQUNJLFlBQVcsRUFDZDs7QUFFRDtFQUNJLFlBQVcsRUFDZDs7QUFGRDtFQUNJLFlBQVcsRUFDZCIsImZpbGUiOiJ3b2FoLmNzcyIsInNvdXJjZXNDb250ZW50IjpbImh0bWwge1xuICAgIGJhY2tncm91bmQ6IGJsdWU7XG59XG5cbjo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XG4gICAgY29sb3I6IGdyYXk7XG59XG5cbjotbXMtaW5wdXQtcGxhY2Vob2xkZXIge1xuICAgIGNvbG9yOiBncmF5O1xufVxuXG46OnBsYWNlaG9sZGVyIHtcbiAgICBjb2xvcjogZ3JheTtcbn0iXX0= */
