@@ -1,14 +1,13 @@
-src = './src'
-dest = './build';
+src = 'src'
+dest = 'build';
 
-cssSrc = './src/**/*.{sass,scss,css}';
-htmlSrc = './src/**/*.{pug,html}';
-jsSrc = './src/**/*.js';
+cssSrc = 'src/**/*.{sass,scss,css}';
+htmlSrc = 'src/**/*.{pug,html}';
+jsSrc = 'src/**/*.js';
 
-// Files that be synced over to dest.
-// Files that match these will be deleted from dest if they don't exist in src.
-assetSrc = './src/**/*.!(sass,scss,css,pug,html,js)';
-assetExtensionsToIgnore = ['sass', 'scss', 'css', 'pug', 'html', 'js']
+// Files that will be copied and updated and deleted over to dest.
+// Note that if you run moveFiles or moveFiles:watch by itself, files won't be deleted.
+assetSrc = 'src/**/*.!(*sass|*scss|*css|*pug|*html|*js)';
 
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
@@ -51,6 +50,7 @@ gulp.task('css', () => {
 
 const watchSass = require('gulp-watch-sass');
 gulp.task('css:watch', () => {
+    gulp.series('css')
     return watchSass(cssSrc)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
@@ -67,7 +67,8 @@ gulp.task('js', () => {
     return gulp.src(jsSrc)
         .pipe(sourcemaps.init())
 		.pipe(babel({
-            presets: ['env']
+            presets: ['env'],
+            compact: false,
 		}))
         .pipe(sourcemaps.write())
 		.pipe(gulp.dest(dest))
@@ -77,35 +78,41 @@ gulp.task('js:watch', () => {
     return watch(jsSrc, {ignoreInitial: false})
         .pipe(sourcemaps.init())
         .pipe(babel({
-            presets: ['env']
+            presets: ['env'],
+            compact: false,
         }))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(dest))
 });
 
-const dirSync = require( 'gulp-directory-sync');
-const minimatch = require('minimatch');
 const path = require('path');
 gulp.task('moveFiles', function() {
-	return gulp.src(src)
-		.pipe(dirSync(src, dest, {
-            ignore: function( dir, file ) {
-                filepath = path.join(dir, file)
-                for (let i = 0; i < assetExtensionsToIgnore.length; i++) {
-                    ext = assetExtensionsToIgnore[i];
-                    if (filepath.endsWith(ext)) return true;
-                }
-                return false;
-            },
-            printSummary: true,
-        }))
-		.on('error', console.log);
+    return gulp.src(assetSrc)
+        .pipe(gulp.dest(dest))
 });
 
 gulp.task('moveFiles:watch', () => {
-    gulp.series('moveFiles')
-    return gulp.watch(assetSrc, gulp.series('moveFiles'))
-})
+    // gulp.series('moveFiles')
+    return watch(assetSrc, {ignoreInitial: false})
+        .on('add', (filepath) => {
+            srcRelativeFilepath = path.relative('', filepath)
+            console.log('added file', srcRelativeFilepath);
+            gulp.src(srcRelativeFilepath, {base: 'src'})
+                .pipe(gulp.dest(dest))
+        })
+        .on('change', (filepath) => {
+            srcRelativeFilepath = path.relative('', filepath)
+            console.log('updated file', srcRelativeFilepath);
+            gulp.src(srcRelativeFilepath, {base: 'src'})
+                .pipe(gulp.dest(dest))
+            })
+        .on('unlink', (filepath) => {
+            srcRelativeFilepath = path.relative('', filepath)
+            relativeFilepath = path.relative(src, filepath)
+            console.log('deleted file', srcRelativeFilepath);
+            del(path.join(dest, relativeFilepath))
+        })
+});
 
 const browserSync = require('browser-sync').create();
 gulp.task('server', () => {
@@ -118,16 +125,15 @@ gulp.task('server', () => {
     })
 });
 
-gulp.task('watch', gulp.series('clean', 'css', gulp.parallel('css:watch', 'html:watch', 'js:watch')));
-gulp.task('build', gulp.series('clean', 'css', 'html', 'js'));
+gulp.task('build', gulp.series('clean', 'css', 'html', 'js', 'moveFiles'));
+gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch', 'js:watch', 'moveFiles:watch')));
 gulp.task('dev', gulp.parallel('watch', 'server'));
 gulp.task('default', gulp.task('dev'));
 
-const exec = require('child_process').exec;
 gulp.task('deploy', gulp.series('build', (cb) => {
-    exec('git subtree push --prefix build origin gh-pages', (err, stdout, stderr) => {
-        if (stdout) console.log(stdout);
-        if (stderr) console.log(stderr);
-        cb(err)
-    })
+    // exec('git subtree push --prefix build origin gh-pages', (err, stdout, stderr) => {
+    //     if (stdout) console.log(stdout);
+    //     if (stderr) console.log(stderr);
+    //     cb(err)
+    // })
 }))
