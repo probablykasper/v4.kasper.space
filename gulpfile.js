@@ -132,9 +132,9 @@ gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch',
 gulp.task('dev', gulp.parallel('watch', 'server'));
 gulp.task('default', gulp.task('dev'));
 
-const ncp = require('ncp').ncp;
+const exec = require('child_process').exec;
 gulp.task('deploy', gulp.series('build', (cb) => {
-    del(deploy)
+    del.sync(deploy);
     gulp.src('dest/**')
         .pipe(gulp.dest(deploy))
     exec('git commit -m "Deploy"', (err, stdout, stderr) => {
