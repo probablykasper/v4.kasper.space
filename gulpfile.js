@@ -1,6 +1,8 @@
 src = 'src'
 dest = 'build';
+deploy = 'docs';
 
+deploySrc = 'dest/'
 cssSrc = 'src/**/*.{sass,scss,css}';
 htmlSrc = 'src/**/*.{pug,html}';
 jsSrc = 'src/**/*.js';
@@ -130,10 +132,14 @@ gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch',
 gulp.task('dev', gulp.parallel('watch', 'server'));
 gulp.task('default', gulp.task('dev'));
 
+const ncp = reqiore('ncp').ncp;
 gulp.task('deploy', gulp.series('build', (cb) => {
-    // exec('git subtree push --prefix build origin gh-pages', (err, stdout, stderr) => {
-    //     if (stdout) console.log(stdout);
-    //     if (stderr) console.log(stderr);
-    //     cb(err)
-    // })
+    del(deploy)
+    gulp.src('dest/**')
+        .pipe(deploy)
+    exec('git commit -m "Deploy"', (err, stdout, stderr) => {
+        if (stdout) console.log(stdout);
+        if (stderr) console.log(stderr);
+        cb(err)
+    });
 }))
