@@ -9,6 +9,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "browser-sync": "^2.26.3",
+    "clarify": "^2.1.0",
     "del": "^3.0.0",
     "git-state": "^4.1.0",
     "git-utils": "^5.4.0",

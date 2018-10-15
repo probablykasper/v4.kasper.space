@@ -12,8 +12,10 @@ const jsSrc = ['src/**/*.js', '!src/lib/**']
 // Note that if you run moveFiles or moveFiles:watch by itself, files won't be deleted.
 const assetSrc = ['src/**/*.!(*sass|*scss|*css|*pug|*html|*js)', 'src/lib/**']
 
+require('clarify')
 const gulp = require('gulp')
 const sourcemaps = require('gulp-sourcemaps')
+
 const del = require('del')
 gulp.task('clean', () => {
   return del(dest)
