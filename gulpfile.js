@@ -132,24 +132,44 @@ gulp.task('dev', gulp.parallel('watch', 'server'));
 gulp.task('default', gulp.task('dev'));
 
 const simpleGit = require('simple-git')();
+const simpleGitPromise = require('simple-git/promise')();
+const gitState = require('git-state');
 gulp.task('deploy', () => {
     return new Promise((resolve, reject) => {
-        gulp.series('build');
-        del.sync(deploy);
-        gulp.src('dest/**')
-            .pipe(gulp.dest(deploy))
-            .on('end', () => {
-                
-                simpleGit.commit('Deploy', deploy, {}, (err, {summary}) => {
-                    if (summary.changes == 0 && summary.insertions == 0 && summary.deletions == 0) {
-                        console.log('No changes to commit');
-                    } else {
-                        console.log('Deployed');
-                    }
-                    if (err) reject(err);
-                    else resolve();
-                })
-                
-            })
+        simpleGitPromise.fetch('.')
+        .then((result) => {
+            const repo = require('git-utils').open('.');
+            const behind = repo.getAheadBehindCount().behind;
+            if (behind != 0) { // there are new commits, aka time to pull
+                throw 'Cannot deploy when local repo is not up to date';
+            }
+            gitState.check('.', (err, result) => {
+                if (err) return Promise.reject(err)
+                if (result.dirty != 0) { // there are uncommitted files
+                    throw 'Cannot deploy when there are uncommitted changes.';
+                }
+                gulp.series('build');
+                del.sync(deploy);
+                gulp.src('dest/**')
+                    .pipe(gulp.dest(deploy))
+                    .on('end', () => {
+                        simpleGitPromise.commit('Deploy', deploy, {})
+                        .then(({summary}) => {
+                            if (summary.changes == 0 && summary.insertions == 0 && summary.deletions == 0) {
+                                console.log('No changes to commit');
+                            } else {
+                                console.log('Deployed');
+                            }
+                            resolve();
+                        })
+                        .catch((err) => {
+                            reject(err)
+                        })
+                    })
+            });
+        })
+        .catch((err) => {
+            reject(err)
+        })
     });
 })
