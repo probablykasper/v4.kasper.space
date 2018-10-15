@@ -1,3 +1,5 @@
+openBrowserWhenDevServerStarts = true;
+
 src = 'src'
 dest = 'build';
 deploy = 'docs';
@@ -122,7 +124,7 @@ gulp.task('server', () => {
             baseDir: dest,
         },
         files: './src',
-        open: false,
+        open: openBrowserWhenDevServerStarts,
     })
 });
 
