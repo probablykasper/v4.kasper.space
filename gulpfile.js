@@ -10,7 +10,7 @@ const htmlSrc = 'src/**/*.{pug,html}'
 const jsSrc = ['src/**/*.js', '!src/lib/**']
 
 // Files that will be copied and updated and deleted over to dest.
-// Note that if you run moveFiles or moveFiles:watch by itself, files won't be deleted.
+// Note that if you run assets or assets:watch by itself, files won't be deleted.
 const assetSrc = ['src/**/*.!(*sass|*scss|*css|*pug|*html|*js)', 'src/lib/**']
 
 require('clarify')
@@ -91,14 +91,14 @@ gulp.task('js:watch', () => {
 })
 
 const path = require('path')
-gulp.task('moveFiles', function () {
-  return gulp.src(assetSrc)
+gulp.task('assets', function () {
+  return gulp.src(assetSrc, { base: src })
     .pipe(gulp.dest(dest))
 })
 
-gulp.task('moveFiles:watch', () => {
-  // gulp.series('moveFiles')
-  return watch(assetSrc, { ignoreInitial: false })
+gulp.task('assets:watch', () => {
+  // gulp.series('assets')
+  return watch(assetSrc, { base: src, ignoreInitial: false })
     .on('add', (filepath) => {
       const srcRelativeFilepath = path.relative('', filepath)
       console.log('added file', srcRelativeFilepath)
@@ -121,7 +121,7 @@ gulp.task('moveFiles:watch', () => {
 
 const browserSync = require('browser-sync').create()
 gulp.task('server', () => {
-  browserSync.init({
+  return browserSync.init({
     server: {
       baseDir: dest
     },
@@ -130,9 +130,9 @@ gulp.task('server', () => {
   })
 })
 
-gulp.task('build', gulp.series('clean', 'css', 'html', 'js', 'moveFiles'))
-gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch', 'js:watch', 'moveFiles:watch')))
-gulp.task('dev', gulp.parallel('watch', 'server'))
+gulp.task('build', gulp.series('clean', 'css', 'html', 'js', 'assets'))
+gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch', 'js:watch', 'assets:watch')))
+gulp.task('dev', gulp.series('build', gulp.parallel('css:watch', 'html:watch', 'js:watch', 'assets:watch', 'server')))
 gulp.task('default', gulp.task('dev'))
 
 const simpleGit = require('simple-git')()
