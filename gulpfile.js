@@ -2,6 +2,7 @@ const openBrowserWhenDevServerStarts = true
 
 const src = 'src'
 const dest = 'build'
+const deploySrc = 'build/**'
 const deploy = 'docs'
 
 const cssSrc = 'src/**/*.{sass,scss,css}'
@@ -134,47 +135,43 @@ gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch',
 gulp.task('dev', gulp.parallel('watch', 'server'))
 gulp.task('default', gulp.task('dev'))
 
-const simpleGitPromise = require('simple-git/promise')()
+const simpleGit = require('simple-git')()
 const gitState = require('git-state')
-// gulp.task('deploy', gulp.series('deployChecks', 'build'));
-gulp.task('deploy', () => {
-  return new Promise((resolve, reject) => {
-    simpleGitPromise.fetch('.')
-      .then((result) => {
-        const repo = require('git-utils').open('.')
-        const behind = repo.getAheadBehindCount().behind
-        if (behind !== 0) { // there are new commits, aka time to pull
-          throw new Error('Cannot deploy when local repo is not up to date')
-        }
-        gitState.check('.', (err, result) => {
-          if (err) return Promise.reject(err)
-          if (result.dirty !== 0) { // there are uncommitted files
-            throw new Error('Cannot deploy when there are uncommitted changes.')
-          }
-          gulp.series('build')
-          del.sync(deploy)
-          gulp.src(dest)
-            .pipe(gulp.dest(deploy))
-            .on('end', () => {
-              simpleGitPromise.commit('Deploy', deploy, {})
-                .then(({ summary }) => {
-                  if (summary.changes === 0 && summary.insertions === 0 && summary.deletions === 0) {
-                    console.log('No changes to commit')
-                  } else {
-                    console.log('Deployed')
-                  }
-                  console.log('fuck off')
+gulp.task('deployChecks', (cb) => {
+  simpleGit.fetch('.', (err, result) => {
+    if (err) return cb(err)
 
-                  resolve()
-                })
-                .catch((err) => {
-                  reject(err)
-                })
-            })
-        })
-      })
-      .catch((err) => {
-        reject(err)
-      })
+    const repo = require('git-utils').open('.')
+    const behind = repo.getAheadBehindCount().behind
+    if (behind !== 0) { // there are new commits, aka time to pull
+      return cb(new Error('Cannot deploy when local repo is not up to date.'))
+    }
+    gitState.check('.', (err, result) => {
+      if (err) return cb(err)
+      if (result.dirty !== 0) {
+        return cb(new Error('Cannot deploy when there are uncommitted changes.'))
+      }
+      cb()
+    })
   })
 })
+gulp.task('deploy', gulp.series('deployChecks', 'build', () => {
+  return new Promise((resolve, reject) => {
+    del.sync(deploy)
+    gulp.src(deploySrc)
+      .pipe(gulp.dest(deploy))
+      .on('end', () => {
+        simpleGit.commit('Deploy', deploy, {}, (err, result) => {
+          if (err) return reject(err)
+          if (result === null || !result.summary) console.log('Could not commit anything')
+          const summary = result.summary
+          if (summary.changes === 0 && summary.insertions === 0 && summary.deletions === 0) {
+            console.log('No changes to commit')
+          } else {
+            console.log('Deployed')
+          }
+          resolve()
+        })
+      })
+  })
+}))
