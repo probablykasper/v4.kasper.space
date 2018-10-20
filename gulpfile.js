@@ -55,7 +55,6 @@ gulp.task('css', () => {
 
 const watchSass = require('gulp-watch-sass')
 gulp.task('css:watch', () => {
-  gulp.series('css')
   return watchSass(cssSrc)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -80,7 +79,7 @@ gulp.task('js', () => {
 })
 
 gulp.task('js:watch', () => {
-  return watch(jsSrc, { ignoreInitial: false })
+  return watch(jsSrc, { ignoreInitial: true })
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['env'],
@@ -98,7 +97,7 @@ gulp.task('assets', function () {
 
 gulp.task('assets:watch', () => {
   // gulp.series('assets')
-  return watch(assetSrc, { base: src, ignoreInitial: false })
+  return watch(assetSrc, { base: src, ignoreInitial: true, read: false })
     .on('add', (filepath) => {
       const srcRelativeFilepath = path.relative('', filepath)
       console.log('added file', srcRelativeFilepath)
@@ -158,7 +157,7 @@ gulp.task('deployChecks', (cb) => {
 gulp.task('deploy', gulp.series('deployChecks', 'build', () => {
   return new Promise((resolve, reject) => {
     del.sync(deploy)
-    gulp.src(deploySrc)
+    gulp.src(deploySrc, { read: false })
       .pipe(gulp.dest(deploy))
       .on('end', () => {
         simpleGit.commit('Deploy', deploy, {}, (err, result) => {

@@ -82,7 +82,7 @@ function init() {
 }
 
 function onWindowResize() {
-    canvasContainerWidth = getCanvasContainerWidth();
+  var canvasContainerWidth = getCanvasContainerWidth();
 
 	windowHalfX = canvasContainerWidth / 2;
 	windowHalfY = canvasHeight / 2;
