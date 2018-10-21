@@ -142,7 +142,10 @@ section {
   section.video .item, section.synctan .item {
     display: flex;
     align-items: center;
-    height: calc(200px/16*9 - 4px); }
+    height: calc(200px/16*9); }
+    section.video .item img, section.synctan .item img {
+      -webkit-transform: scale(1.02);
+      transform: scale(1.02); }
   section.lacuna .item {
     height: auto; }
   section.github .item {
