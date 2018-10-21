@@ -16,6 +16,7 @@ const assetSrc = ['src/**/!(*.sass|*.scss|*.css|*.pug|*.html|*.js)', 'src/lib/**
 require('clarify')
 const gulp = require('gulp')
 const sourcemaps = require('gulp-sourcemaps')
+const plumber = require('gulp-plumber');
 
 const del = require('del')
 gulp.task('clean', () => {
@@ -29,6 +30,7 @@ gulp.task('cleanDeployDir', () => {
 const pug = require('gulp-pug')
 gulp.task('html', () => {
   return gulp.src(htmlSrc)
+    .pipe(plumber())
     .pipe(pug())
     .pipe(gulp.dest(dest))
 })
@@ -37,6 +39,7 @@ const watch = require('gulp-watch')
 const gulpWatchPug = require('gulp-watch-pug')
 gulp.task('html:watch', () => {
   return gulp.src(htmlSrc)
+    .pipe(plumber())
     .pipe(watch(htmlSrc))
     .pipe(gulpWatchPug(htmlSrc, { delay: 100 }))
     .pipe(pug())
@@ -47,6 +50,7 @@ const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 gulp.task('css', () => {
   return gulp.src(cssSrc)
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
@@ -60,6 +64,7 @@ gulp.task('css', () => {
 const watchSass = require('gulp-watch-sass')
 gulp.task('css:watch', () => {
   return watchSass(cssSrc)
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
@@ -74,6 +79,7 @@ const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
 gulp.task('js', () => {
   return gulp.src(jsSrc)
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['env'],
@@ -86,6 +92,7 @@ gulp.task('js', () => {
 
 gulp.task('js:watch', () => {
   return watch(jsSrc, { ignoreInitial: true })
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['env'],
