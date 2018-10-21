@@ -8,8 +8,8 @@ My personal website. It uses the [YouTube Data API](https://developers.google.co
 2. Run `npm install gulp-cli -g` to install dependencies
 2. Run `npm install` to install dependencies
 
-- `gulp build`: Build `/src` into `/build`. It deletes `/build`, copies everything from `/src` into `/build`, compiles pug/sass/es6, autoprefixes css and adds sourcemaps to css/js.
+- `gulp`: Same as `gulp watch server`.
+- `gulp build`: Deletes `/build`, compiles all pug/sass/js in `/src` except for `/src/lib`, copies everything else from `/src` into `/build`, autoprefixes css, adds sourcemaps to css/js.
 - `gulp watch`: Build and watch for changes.
 - `gulp server`: Starts dev server on localhost:3000.
-- `gulp dev` or just `gulp`: In case you don't want to type `gulp watch server`.
-- `gulp deploy`: Build and deploy to GitHub Pages (by copying `/build` into the gh-pages branch).
+- `gulp deploy`: Build and deploy to GitHub Pages (/docs folder)
