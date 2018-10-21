@@ -53,7 +53,7 @@ gulp.task('css', () => {
       // browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write(''))
     .pipe(gulp.dest(dest))
 })
 
@@ -66,7 +66,7 @@ gulp.task('css:watch', () => {
       // browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write(''))
     .pipe(gulp.dest(dest))
 })
 
@@ -80,7 +80,7 @@ gulp.task('js', () => {
       compact: false
     }))
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write(''))
     .pipe(gulp.dest(dest))
 })
 
@@ -92,7 +92,7 @@ gulp.task('js:watch', () => {
       compact: false
     }))
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write(''))
     .pipe(gulp.dest(dest))
 })
 
