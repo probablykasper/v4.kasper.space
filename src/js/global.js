@@ -74,8 +74,9 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     }
     document.querySelector('section.video').classList.remove('hidden')
   }, (err) => {
-    throw Error('Could not fetch YouTube playlistItems')
-    console.log(err)
+    document.querySelector('section.video').classList.add('removed')
+    console.log('Could not fetch Video YouTube playlistItems')
+    throw Error(err)
   })
 })();
 
@@ -101,8 +102,9 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     }
     document.querySelector('section.synctan').classList.remove('hidden')
   }, (err) => {
-    throw Error('Could not fetch YouTube playlistItems')
-    console.log(err)
+    document.querySelector('section.synctan').classList.add('removed')
+    console.log('Could not fetch Synctan YouTube playlistItems')
+    throw Error(err)
   })
 })();
 
@@ -126,8 +128,9 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     }
     document.querySelector('section.lacuna').classList.remove('hidden')
   }, (err) => {
-    throw Error('Could not fetch SoundCloud tracks')
-    console.log(err)
+    document.querySelector('section.lacuna').classList.add('removed')
+    console.log('Could not fetch SoundCloud tracks')
+    throw Error(err)
   })
 })();
 
@@ -157,34 +160,43 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     method: 'POST'
-  }).then((response) => {
-    response.json().then((result) => {
-      console.log('==--==--==--> GitHub')
-      console.log(result.data)
-      const repos = result.data.user.pinnedRepositories.edges
-      for (var i = 0; i < 6; i++) {
-        const repo = repos[i].node
-        const description = repo.description
-        const repoWebsite = repo.homepageUrl
-        const name = repo.name
-        const repoUrl = repo.url
-        // const img = tracks[i].artwork_url.replace('large', 't300x300')
-        const item = document.querySelector('section.github .cards .item:nth-child(' + (i + 1) + ')')
-        // item.setAttribute('href', url)
-        item.querySelector('p.title').innerHTML = name
-        item.querySelector('p.description').innerHTML = description
-        if (repoUrl) {
-          item.querySelector('a.repo-url').setAttribute('href', repoUrl)
-          item.querySelector('a.repo-url').classList.remove('hidden')
-        }
-        if (repoWebsite) {
-          item.querySelector('a.repo-website').setAttribute('href', repoWebsite)
-          item.querySelector('a.repo-website').classList.remove('hidden')
-        }
-      }
-      document.querySelector('section.github').classList.remove('hidden')
-    })
   })
+    .then((response) => {
+      if (response.ok) return response
+      else throw Error(response)
+    })
+    .then((response) => {
+      response.json().then((result) => {
+        console.log('==--==--==--> GitHub')
+        console.log(result.data)
+        const repos = result.data.user.pinnedRepositories.edges
+        for (var i = 0; i < 6; i++) {
+          const repo = repos[i].node
+          const description = repo.description
+          const repoWebsite = repo.homepageUrl
+          const name = repo.name
+          const repoUrl = repo.url
+          // const img = tracks[i].artwork_url.replace('large', 't300x300')
+          const item = document.querySelector('section.github .cards .item:nth-child(' + (i + 1) + ')')
+          // item.setAttribute('href', url)
+          item.querySelector('p.title').innerHTML = name
+          item.querySelector('p.description').innerHTML = description
+          if (repoUrl) {
+            item.querySelector('a.repo-url').setAttribute('href', repoUrl)
+            item.querySelector('a.repo-url').classList.remove('hidden')
+          }
+          if (repoWebsite) {
+            item.querySelector('a.repo-website').setAttribute('href', repoWebsite)
+            item.querySelector('a.repo-website').classList.remove('hidden')
+          }
+        }
+        document.querySelector('section.github').classList.remove('hidden')
+      })
+    })
+    .catch((err) => {
+      document.querySelector('section.github').classList.add('removed')
+      throw err
+    })
 })()
 
 // discord/email popups
