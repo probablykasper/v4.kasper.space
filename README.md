@@ -6,7 +6,7 @@ My personal website. It uses the [YouTube Data API](https://developers.google.co
 # Dev Instructions
 1. Install Node.js
 2. Run `npm install gulp-cli -g` to install dependencies
-2. Run `npm install` to install dependencies
+3. Run `npm install` to install dependencies
 
 - `gulp`: Same as `gulp watch server`.
 - `gulp build`: Deletes `/build`, compiles all pug/sass/js in `/src` except for `/src/lib`, copies everything else from `/src` into `/build`, autoprefixes css, adds sourcemaps to css/js.
