@@ -173,7 +173,7 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
         console.log('==--==--==--> GitHub')
         console.log(result.data)
         const repos = result.data.user.pinnedRepositories.edges
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < repos.length; i++) {
           const repo = repos[i].node
           const description = repo.description
           const repoWebsite = repo.homepageUrl
@@ -182,6 +182,7 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
           // const img = tracks[i].artwork_url.replace('large', 't300x300')
           const item = document.querySelector('section.github .cards .item:nth-child(' + (i + 1) + ')')
           // item.setAttribute('href', url)
+          item.classList.remove('hidden')
           item.querySelector('p.title').innerHTML = name
           item.querySelector('p.description').innerHTML = description
           if (repoUrl) {
