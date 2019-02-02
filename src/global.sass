@@ -47,13 +47,18 @@ html
 @media (max-width: 600px)
     div.social-media
         grid-template-columns: repeat(4, 1fr)
-@media (max-width: 600px)
     section
         div.thumbnails .item, div.cards .item
             width: 300px
+        .thumbnails, .cards
+            > .item:nth-child(1n+4)
+                display: none
     section.video, section.synctan
         div.thumbnails .item
             height: calc(300px/16*9 - 4px)
+    section.lacuna
+        div.thumbnails .item
+            height: 270px
     section.github div.cards
         .item
             padding: 10px
