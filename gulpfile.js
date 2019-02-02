@@ -11,7 +11,9 @@ const jsSrc = ['src/**/*.js', '!src/lib/**']
 
 // Files that will be copied and updated and deleted over to dest.
 // Note that if you run assets or assets:watch by itself, files won't be deleted.
-const assetSrc = ['src/**/!(*.sass|*.scss|*.css|*.pug|*.html|*.js)', 'src/lib/**/*']
+const assetSrc = ['src/**/!(*.sass|*.scss|*.css|*.pug|*.html|*.js)', '!src/favicon/**', 'src/lib/**/*']
+// everything in this folder will be moved to the root
+const faviconSrc = 'src/favicon/**/*'
 
 require('clarify')
 const gulp = require('gulp')
@@ -109,6 +111,11 @@ gulp.task('assets', function () {
     .pipe(gulp.dest(dest))
 })
 
+gulp.task('favicon', function () {
+  return gulp.src(faviconSrc)
+    .pipe(gulp.dest(dest))
+})
+
 gulp.task('assets:watch', () => {
   // gulp.series('assets')
   return watch(assetSrc, { base: src, ignoreInitial: true, read: false })
@@ -136,14 +143,14 @@ const browserSync = require('browser-sync').create()
 gulp.task('server', () => {
   return browserSync.init({
     server: {
-      baseDir: dest
+      baseDir: dest,
     },
     files: './src',
-    open: openBrowserWhenDevServerStarts
+    open: openBrowserWhenDevServerStarts,
   })
 })
 
-gulp.task('build', gulp.series('clean', 'css', 'html', 'js', 'assets'))
+gulp.task('build', gulp.series('clean', 'css', 'html', 'js', 'favicon', 'assets'))
 gulp.task('watch', gulp.series('build', gulp.parallel('css:watch', 'html:watch', 'js:watch', 'assets:watch')))
 gulp.task('default', gulp.series('build', gulp.parallel('css:watch', 'html:watch', 'js:watch', 'assets:watch', 'server')))
 
