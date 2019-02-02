@@ -52,7 +52,7 @@ section {
   grid-gap: 20px;
   grid-template-columns: repeat(8, 1fr);
   margin: 10px auto;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   width: 1000px;
   max-width: 100%;
   justify-content: space-around; }
@@ -90,8 +90,7 @@ section {
 section {
   width: 100%;
   margin-bottom: 50px;
-  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) all;
-  overflow: hidden; }
+  transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) all; }
   section.hidden {
     opacity: 0; }
   section.removed {
@@ -102,8 +101,11 @@ section {
       margin: auto;
       text-align: center; }
     section .header p.title {
+      color: #000000;
       font-size: 26px;
       margin-bottom: 4px; }
+    section .header p.description {
+      color: #383838; }
   section .thumbnails, section .cards {
     width: 100%;
     display: flex;
@@ -130,6 +132,55 @@ section {
         transition: 1s cubic-bezier(0.4, 0, 0.2, 1) all;
         width: 100%;
         display: block; }
+  section .see-more {
+    margin: auto;
+    display: table;
+    padding: 9px 13px;
+    text-decoration: none;
+    position: relative;
+    border-radius: 6px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.3s cubic-bezier(0.4, 0, 0.2, 1) -webkit-transform;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.3s cubic-bezier(0.4, 0, 0.2, 1) -webkit-transform;
+    background-color: rgba(0, 0, 0, 0.03); }
+    section .see-more::before {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.3s cubic-bezier(0.4, 0, 0.2, 1) -webkit-transform;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.3s cubic-bezier(0.4, 0, 0.2, 1) -webkit-transform; }
+    section .see-more::after {
+      background-color: rgba(0, 0, 0, 0.03);
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.3s cubic-bezier(0.4, 0, 0.2, 1) -webkit-transform;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color;
+      transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1) transform, 0.3s cubic-bezier(0.4, 0, 0.2, 1) background-color, 0.3s cubic-bezier(0.4, 0, 0.2, 1) -webkit-transform;
+      pointer-events: none; }
+    section .see-more:hover {
+      background-color: rgba(0, 0, 0, 0.06);
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8); }
+      section .see-more:hover::before {
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4); }
+      section .see-more:hover::after {
+        background-color: rgba(0, 0, 0, 0.06);
+        -webkit-transform: scale(1.4) rotateZ(180deg);
+        transform: scale(1.4) rotateZ(180deg); }
+    section .see-more p {
+      margin: auto;
+      color: #000000; }
   section.video .item, section.synctan .item {
     display: flex;
     align-items: center;
@@ -158,7 +209,8 @@ section {
     section.github .item p.title {
       margin: 18px;
       margin-bottom: 10px;
-      font-size: 18px; }
+      font-size: 18px;
+      color: #000000; }
     section.github .item p.description {
       margin: 0px 18px;
       font-size: 14px;
