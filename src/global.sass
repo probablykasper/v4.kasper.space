@@ -2,6 +2,14 @@
 $darkest: #14161D
 $selection-color: #ffffff
 $selection-bg-color: #6273D8
+$link-color: #006edc
+$button-color: #3f3f3f
+$description-color: #383838
+$tiny-description-color: #5a5a5a
+$card-edge-color: #ececec
+$title-color: #000000
+
+$button-text-color: #000000
 
 // transitions
 $transition-15:             .15s cubic-bezier(0.4, 0.0, 0.2, 1.0)
@@ -61,7 +69,7 @@ section
         height: 22px
         width: 22px
         padding: 12px
-        fill: #3f3f3f
+        fill: $button-color
         opacity: 0.8
         &:hover
             opacity: 1
@@ -108,7 +116,7 @@ section
     width: 100%
     margin-bottom: 50px
     transition: $transition-40 all
-    overflow: hidden
+    // overflow: hidden
     &.hidden
         opacity: 0
     &.removed
@@ -119,9 +127,11 @@ section
             margin: auto
             text-align: center
         p.title
+            color: $title-color
             font-size: 26px
             margin-bottom: 4px
         p.description
+            color: $description-color
     .thumbnails, .cards
         width: 100%
         display: flex
@@ -144,6 +154,46 @@ section
                 transition: $transition-100 all
                 width: 100%
                 display: block
+    .see-more
+        margin: auto
+        display: table
+        padding: 9px 13px
+        text-decoration: none
+        position: relative
+        border-radius: 6px
+        transition: $transition-30 transform, $transition-30 background-color
+        background-color: rgba(#000000, 0.03)
+        &::before // for increasing the hover area
+            content: ''
+            position: absolute
+            top: 0px
+            left: 0px
+            width: 100%
+            height: 100%
+            border-radius: 6px
+            transition: $transition-30 transform, $transition-30 background-color
+        &::after
+            background-color: rgba(#000000, 0.03)
+            content: ''
+            position: absolute
+            top: 0px
+            left: 0px
+            width: 100%
+            height: 100%
+            border-radius: 6px
+            transition: $transition-30 transform, $transition-30 background-color
+            pointer-events: none
+        &:hover
+            background-color: rgba(#000000, 0.06)
+            transform: scale(0.8)
+            &::before
+                transform: scale(1.4)
+            &::after
+                background-color: rgba(#000000, 0.06)
+                transform: scale(1.4) rotateZ(180deg)
+        p
+            margin: auto
+            color: $button-text-color
     &.video, &.synctan
         .item
             display: flex
@@ -164,7 +214,7 @@ section
             flex-direction: column
             width: calc(200px + 20px)
             margin: calc(50px - 20px)
-            border: 2px solid #ececec
+            border: 2px solid $card-edge-color
             box-sizing: border-box
             backface-visibility: hidden
             &:hover
@@ -173,10 +223,11 @@ section
                 margin: 18px
                 margin-bottom: 10px
                 font-size: 18px
+                color: $title-color
             p.description
                 margin: 0px 18px
                 font-size: 14px
-                color: #5a5a5a
+                color: $tiny-description-color
             .urls
                 display: flex
                 justify-content: flex-end
