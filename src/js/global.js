@@ -121,7 +121,7 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     console.log(tracks)
     for (var i = 0; i < 6; i++) {
       var url = tracks[i].permalink_url
-      var img = tracks[i].artwork_url.replace('large', 't300x300')
+      var img = tracks[i].artwork_url.replace('large', 't500x500')
       var item = document.querySelector('section.lacuna .thumbnails .item:nth-child(' + (i + 1) + ')')
       item.setAttribute('href', url)
       item.querySelector('img').setAttribute('src', img)

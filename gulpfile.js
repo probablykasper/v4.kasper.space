@@ -138,7 +138,7 @@ gulp.task('server', () => {
     server: {
       baseDir: dest
     },
-    files: './src',
+    // files: './src',
     open: openBrowserWhenDevServerStarts
   })
 })
