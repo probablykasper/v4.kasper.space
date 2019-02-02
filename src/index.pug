@@ -21,16 +21,24 @@ html(lang='en')
     body
         img.logo(alt="" src="static/kh-logo.png")
         .social-media
-            a.twitter(target="_blank" rel="noopener noreferrer" title="Twitter" href="https://twitter.com/SpectralKH")
-            a.discord.has-popup.hidden(title="Discord")
+            a.svg-link.twitter(target="_blank" rel="noopener noreferrer" title="Twitter" href="https://twitter.com/SpectralKH")
+                include static/svg logos/twitter.svg
+            a.svg-link.discord.has-popup.popup-hidden(title="Discord")
+                include static/svg logos/discord.svg
                 p.popup Kasper#6425
-            a.youtube(target="_blank" rel="noopener noreferrer" title="YouTube" href="https://youtube.com/SpectralKH")
-            a.instagram(target="_blank" rel="noopener noreferrer" title="Instagram" href="https://www.instagram.com/spckh/")
-            a.github(target="_blank" rel="noopener noreferrer" title="GitHub" href="https://github.com/SpectralKH")
-            a.facebook(target="_blank" rel="noopener noreferrer" title="Facebook" href="https://www.facebook.com/SpectralKH")
-            a.email.has-popup.hidden(title="Email")
+            a.svg-link.youtube(target="_blank" rel="noopener noreferrer" title="YouTube" href="https://youtube.com/SpectralKH")
+                include static/svg logos/youtube.svg
+            a.svg-link.instagram(target="_blank" rel="noopener noreferrer" title="Instagram" href="https://www.instagram.com/spckh/")
+                include static/svg logos/instagram.svg
+            a.svg-link.github(target="_blank" rel="noopener noreferrer" title="GitHub" href="https://github.com/SpectralKH")
+                include static/svg logos/github.svg
+            a.svg-link.facebook(target="_blank" rel="noopener noreferrer" title="Facebook" href="https://www.facebook.com/SpectralKH")
+                include static/svg logos/facebook.svg
+            a.svg-link.email.has-popup.popup-hidden(title="Email")
+                include static/icons/envelope.svg
                 p.popup kasperkh.kh@gmail.com
-            a.soundcloud(target="_blank" rel="noopener noreferrer" title="SoundCloud" href="https://soundcloud.com/SpectralKH")
+            a.svg-link.soundcloud(target="_blank" rel="noopener noreferrer" title="SoundCloud" href="https://soundcloud.com/SpectralKH")
+                include static/svg logos/soundcloud.svg
         section.video.hidden
             .header
                 p.title Video
@@ -65,8 +73,10 @@ html(lang='en')
                         p.title
                         p.description
                         .urls
-                            a.repo-website.hidden(title="Website" target="_blank" rel="noopener noreferrer")
-                            a.repo-url.hidden(title="Repository" target="_blank" rel="noopener noreferrer")
+                            a.svg-link.repo-website.hidden(title="Website" target="_blank" rel="noopener noreferrer")
+                                include static/icons/link.svg
+                            a.svg-link.repo-url.hidden(title="Repository" target="_blank" rel="noopener noreferrer")
+                                include static/svg logos/github.svg
         //- script
         //-     include global.js
         script(src="js/global.js")

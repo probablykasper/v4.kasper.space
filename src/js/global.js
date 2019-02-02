@@ -201,20 +201,20 @@ document.addEventListener('click', function (e) {
   function hideAllPopups () {
     var iconsWithPopups = document.querySelectorAll('a.has-popup')
     for (var i = 0; i < iconsWithPopups.length; i++) {
-      iconsWithPopups[i].classList.add('hidden')
+      iconsWithPopups[i].classList.add('popup-hidden')
     }
   }
 
   if (e.target.classList.contains('has-popup')) {
     var icon = e.target
-  } else if (e.target.classList.contains('popup')) {
+  } else if (e.target.parentNode.classList.contains('has-popup')) {
     var icon = e.target.parentNode
   } else {
     hideAllPopups()
     return
   }
 
-  if (icon.classList.contains('hidden')) { // if popup is hidden
+  if (icon.classList.contains('popup-hidden')) { // if popup is hidden
     hideAllPopups()
 
     // select
@@ -225,11 +225,11 @@ document.addEventListener('click', function (e) {
     selection.removeAllRanges()
     selection.addRange(range)
     
-    icon.classList.remove('hidden')
+    icon.classList.remove('popup-hidden')
     
   } else if (!e.target.classList.contains('popup')) { // if popup wasn't clicked
   
-    icon.classList.add('hidden')
+    icon.classList.add('popup-hidden')
 
   }
 
