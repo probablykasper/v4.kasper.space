@@ -205,28 +205,37 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
 
 // discord/email popups
 document.addEventListener('click', function (e) {
-  function hideAllInputs () {
-    var inputs = document.querySelectorAll('a.has-popup input')
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].classList.add('hidden')
+  function hideAllPopups () {
+    var popups = document.querySelectorAll('a.has-popup .popup')
+    for (var i = 0; i < popups.length; i++) {
+      popups[i].classList.add('hidden')
     }
   }
   var hasClassHasPopup = e.target.classList.contains('has-popup')
   var hasClassPopup = e.target.classList.contains('popup')
   if (hasClassHasPopup || hasClassPopup) {
-    var input = e.target.querySelector('input')
-    if (e.target.classList.contains('popup')) input = e.target
-    var clickedInput = e.target.classList.contains('popup')
-    var inputIsHidden = input.classList.contains('hidden')
-    if (inputIsHidden) {
-      hideAllInputs()
-      input.select()
-      input.classList.remove('hidden')
-    } else if (!clickedInput) {
-      input.classList.add('hidden')
+    let socialMediaButton = e.target
+    if (hasClassPopup) socialMediaButton = e.target.parentElement
+    var popup = e.target.querySelector('.popup')
+    if (e.target.classList.contains('popup')) popup = e.target
+    var clickedpopup = e.target.classList.contains('popup')
+    var popupIsHidden = popup.classList.contains('hidden')
+    if (popupIsHidden) {
+      hideAllPopups()
+
+      // select
+      const range = document.createRange()
+      range.selectNodeContents(socialMediaButton.querySelector('.popup'))
+      const selection = window.getSelection()
+      selection.removeAllRanges()
+      selection.addRange(range)
+      
+      popup.classList.remove('hidden')
+    } else if (!clickedpopup) {
+      popup.classList.add('hidden')
     }
   } else {
     // clicked anywhere
-    hideAllInputs()
+    hideAllPopups()
   }
 })
