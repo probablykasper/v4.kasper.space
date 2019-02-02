@@ -101,13 +101,13 @@ section
         background-image: url('data:image/svg+xml;utf8,<svg fill="%233f3f3f" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M18 2c1.105 0 2 0.895 2 2v0 12c0 1.105-0.895 2-2 2v0h-16c-1.105 0-2-0.895-2-2v0-12c0-1.1 0.9-2 2-2h16zM13.63 11.1l6.37 4.9v-2l-5.12-3.9 5.12-4.1v-2l-10 8-10-8v2l5.12 4.1-5.12 3.9v2l6.37-4.9 3.63 2.9 3.63-2.9z"></path></svg>')
     a.has-popup
         position: relative
+        &.hidden .popup
+            transform: translate(-50%, -10px) scale(0.5)
+            pointer-events: none
+            opacity: 0
         .popup
             margin: 0px
             cursor: text
-            &.hidden
-                transform: translate(-50%, -10px) scale(0.5)
-                pointer-events: none
-                opacity: 0
             display: block
             text-align: center
             font-family: "Rubik", sans-serif

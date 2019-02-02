@@ -102,12 +102,12 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
 
 (function Lacuna () {
   var maxResults = 8
-
+  
   // Lacuna
   var clientID = '6ibYZTmF5qnpvp88S9V3werVrC18WCdC'
   var url = 'https://api.soundcloud.com/users/247370320/tracks' +
-    '?limit=' + maxResults +
-    '&client_id=' + clientID
+  '?limit=' + maxResults +
+  '&client_id=' + clientID
   xhr(null, url, { type: 'GET' }).then((tracks) => {
     console.log('==--==--==--> SoundCloud Lacuna')
     console.log(tracks)
@@ -199,36 +199,38 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
 // discord/email popups
 document.addEventListener('click', function (e) {
   function hideAllPopups () {
-    var popups = document.querySelectorAll('a.has-popup .popup')
-    for (var i = 0; i < popups.length; i++) {
-      popups[i].classList.add('hidden')
+    var iconsWithPopups = document.querySelectorAll('a.has-popup')
+    for (var i = 0; i < iconsWithPopups.length; i++) {
+      iconsWithPopups[i].classList.add('hidden')
     }
   }
-  var hasClassHasPopup = e.target.classList.contains('has-popup')
-  var hasClassPopup = e.target.classList.contains('popup')
-  if (hasClassHasPopup || hasClassPopup) {
-    let socialMediaButton = e.target
-    if (hasClassPopup) socialMediaButton = e.target.parentElement
-    var popup = e.target.querySelector('.popup')
-    if (e.target.classList.contains('popup')) popup = e.target
-    var clickedpopup = e.target.classList.contains('popup')
-    var popupIsHidden = popup.classList.contains('hidden')
-    if (popupIsHidden) {
-      hideAllPopups()
 
-      // select
-      const range = document.createRange()
-      range.selectNodeContents(socialMediaButton.querySelector('.popup'))
-      const selection = window.getSelection()
-      selection.removeAllRanges()
-      selection.addRange(range)
-      
-      popup.classList.remove('hidden')
-    } else if (!clickedpopup) {
-      popup.classList.add('hidden')
-    }
+  if (e.target.classList.contains('has-popup')) {
+    var icon = e.target
+  } else if (e.target.classList.contains('popup')) {
+    var icon = e.target.parentNode
   } else {
-    // clicked anywhere
     hideAllPopups()
+    return
   }
+
+  if (icon.classList.contains('hidden')) { // if popup is hidden
+    hideAllPopups()
+
+    // select
+    const range = document.createRange()
+    const popup = icon.querySelector('.popup')
+    range.selectNodeContents(popup)
+    const selection = window.getSelection()
+    selection.removeAllRanges()
+    selection.addRange(range)
+    
+    icon.classList.remove('hidden')
+    
+  } else if (!e.target.classList.contains('popup')) { // if popup wasn't clicked
+  
+    icon.classList.add('hidden')
+
+  }
+
 })
