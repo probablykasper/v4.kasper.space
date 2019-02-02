@@ -49,28 +49,20 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     '&part=snippet' +
     '&maxResults=' + maxResults +
     '&playlistId='
-  var personalURL = url + 'UUy6jcAF6fZGttRvihyQixbA'
-  var commissionsURL = url + 'PL84-DNDSU8p5WP6jA7hvOCV9dIKBNjdCS'
-  var personal = xhr(null, personalURL, { type: 'GET' })
-  var commissions = xhr(null, commissionsURL, { type: 'GET' })
-  Promise.all([personal, commissions]).then((results) => {
-    console.log('==--==--==--> YouTube Personal + Commissions')
-    console.log(results)
-    // combine video and commission responses
-    var items = results[0].items.concat(results[1].items)
-    items.sort(function (a, b) {
-      var dateA = new Date(a.snippet.publishedAt)
-      var dateB = new Date(b.snippet.publishedAt)
-      return dateB - dateA // sort by date ascending
-    })
-    items = items.splice(0, maxResults)
+  var myWork = xhr(null, url + 'PL84-DNDSU8p5WP6jA7hvOCV9dIKBNjdCS', { type: 'GET' })
+  myWork.then((result) => {
+    console.log('==--==--==--> YouTube Video')
+    console.log(result)
+    var items = result.items
     for (var i = 0; i < items.length; i++) {
       var url = items[i].snippet.resourceId.videoId
-      var img = items[i].snippet.thumbnails.high.url
-      var title = items[i].snippet.title
+      // var img = items[i].snippet.thumbnails.high.url
+      var img = items[i].snippet.thumbnails.standard.url
+      // var img = items[i].snippet.thumbnails.maxres.url
       var item = document.querySelector('section.video .thumbnails a.item:nth-child(' + (i + 1) + ')')
       item.setAttribute('href', 'https://www.youtube.com/watch?v=' + url)
       item.querySelector('img').setAttribute('src', img)
+      item.title = items[i].snippet.title // hover title
     }
     document.querySelector('section.video').classList.remove('hidden')
   }, (err) => {
@@ -95,10 +87,10 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     for (var i = 0; i < items.length; i++) {
       var url = items[i].snippet.resourceId.videoId
       var img = items[i].snippet.thumbnails.high.url
-      var title = items[i].snippet.title
       var item = document.querySelector('section.synctan .thumbnails .item:nth-child(' + (i + 1) + ')')
       item.setAttribute('href', 'https://www.youtube.com/watch?v=' + url)
       item.querySelector('img').setAttribute('src', img)
+      item.title = items[i].snippet.title // hover title
     }
     document.querySelector('section.synctan').classList.remove('hidden')
   }, (err) => {
@@ -125,6 +117,7 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
       var item = document.querySelector('section.lacuna .thumbnails .item:nth-child(' + (i + 1) + ')')
       item.setAttribute('href', url)
       item.querySelector('img').setAttribute('src', img)
+      item.title = tracks[i].title // hover title
     }
     document.querySelector('section.lacuna').classList.remove('hidden')
   }, (err) => {
