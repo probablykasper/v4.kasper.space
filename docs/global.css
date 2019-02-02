@@ -140,6 +140,8 @@ section {
         section .thumbnails .item:hover img, section .cards .item:hover img {
           -webkit-transform: scale(1.3);
           transform: scale(1.3); }
+      section .thumbnails .item.hidden, section .cards .item.hidden {
+        display: none; }
       section .thumbnails .item img, section .cards .item img {
         transition: 1s cubic-bezier(0.4, 0, 0.2, 1) all;
         width: 100%;
@@ -151,7 +153,9 @@ section {
     section.video .item img, section.synctan .item img {
       -webkit-transform: scale(1.02);
       transform: scale(1.02); }
-  section.lacuna .item {
+  section.soundcloud .item {
+    width: 180px;
+    margin: 40px 50px;
     height: auto; }
   section.github .cards {
     margin-top: 10px; }
