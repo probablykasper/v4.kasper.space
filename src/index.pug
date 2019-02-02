@@ -35,50 +35,23 @@ html
                 p.title Video
                 p.description I make some pretty cool videos. I'd watch them.
             .thumbnails
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
+                - for (var i = 0; i < 6; i++)
+                    a.item(target="_blank")
+                        img
         section.synctan.hidden
             .header
                 p.title Synctan
                 p.description A YouTube channel where I curate all kinds of music I like.
             .thumbnails
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
+                - for (var i = 0; i < 6; i++)
+                    a.item(target="_blank")
+                        img
         section.lacuna.hidden
             .header
                 p.title Lacuna
                 p.description I am a co-owner of this independent indie record label.
             .thumbnails
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
-                a.item(target="_blank")
-                    img
+                - for (var i = 0; i < 6; i++)
                 a.item(target="_blank")
                     img
         section.github.hidden
@@ -86,42 +59,13 @@ html
                 p.title Development
                 p.description I do some programming for fun. These are some of my favorite projects.
             .cards
-                .item.hidden
-                    p.title
-                    p.description
-                    .urls
-                        a.repo-website.hidden(target="_blank")
-                        a.repo-url.hidden(target="_blank")
-                .item.hidden
-                    p.title
-                    p.description
-                    .urls
-                        a.repo-website.hidden(target="_blank")
-                        a.repo-url.hidden(target="_blank")
-                .item.hidden
-                    p.title
-                    p.description
-                    .urls
-                        a.repo-website.hidden(target="_blank")
-                        a.repo-url.hidden(target="_blank")
-                .item.hidden
-                    p.title
-                    p.description
-                    .urls
-                        a.repo-website.hidden(target="_blank")
-                        a.repo-url.hidden(target="_blank")
-                .item.hidden
-                    p.title
-                    p.description
-                    .urls
-                        a.repo-website.hidden(target="_blank")
-                        a.repo-url.hidden(target="_blank")
-                .item.hidden
-                    p.title
-                    p.description
-                    .urls
-                        a.repo-website.hidden(target="_blank")
-                        a.repo-url.hidden(target="_blank")
+                - for (var i = 0; i < 6; i++)
+                    .item.hidden
+                        p.title
+                        p.description
+                        .urls
+                            a.repo-website.hidden(target="_blank")
+                            a.repo-url.hidden(target="_blank")
         //- script
         //-     include global.js
         script(src="js/global.js")
