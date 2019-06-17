@@ -72,7 +72,7 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
   })
 })();
 
-(function Synctan () {
+(function Shrive () {
   var maxResults = 6
 
   var url = 'https://www.googleapis.com/youtube/v3/playlistItems' +
@@ -81,21 +81,21 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     '&maxResults=' + maxResults +
     '&playlistId=UUoMimPRPeR28TM3_0cinjVQ'
   xhr(null, url, { type: 'GET' }).then((result) => {
-    console.log('==--==--==-->YouTube Synctan')
+    console.log('==--==--==-->YouTube Shrive')
     console.log(result)
     var items = result.items
     for (var i = 0; i < items.length; i++) {
       var url = items[i].snippet.resourceId.videoId
       var img = items[i].snippet.thumbnails.high.url
-      var item = document.querySelector('section.synctan .thumbnails .item:nth-child(' + (i + 1) + ')')
+      var item = document.querySelector('section.shrive .thumbnails .item:nth-child(' + (i + 1) + ')')
       item.setAttribute('href', 'https://www.youtube.com/watch?v=' + url)
       item.querySelector('img').setAttribute('src', img)
       item.title = items[i].snippet.title // hover title
     }
-    document.querySelector('section.synctan').classList.remove('hidden')
+    document.querySelector('section.shrive').classList.remove('hidden')
   }, (err) => {
-    document.querySelector('section.synctan').classList.add('removed')
-    console.log('Could not fetch Synctan YouTube playlistItems')
+    document.querySelector('section.shrive').classList.add('removed')
+    console.log('Could not fetch Shrive YouTube playlistItems')
     throw Error(err)
   })
 })();

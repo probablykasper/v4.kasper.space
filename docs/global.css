@@ -22,7 +22,7 @@ html body {
     width: 300px; }
   section .thumbnails > .item:nth-child(1n+4), section .cards > .item:nth-child(1n+4) {
     display: none; }
-  section.video div.thumbnails .item, section.synctan div.thumbnails .item {
+  section.video div.thumbnails .item, section.shrive div.thumbnails .item {
     height: calc(300px/16*9 - 4px); }
   section.lacuna div.thumbnails .item {
     height: 270px; }
@@ -183,11 +183,11 @@ section {
     section .see-more p {
       margin: auto;
       color: #000000; }
-  section.video .item, section.synctan .item {
+  section.video .item, section.shrive .item {
     display: flex;
     align-items: center;
     height: calc(200px/16*9); }
-    section.video .item img, section.synctan .item img {
+    section.video .item img, section.shrive .item img {
       -webkit-transform: scale(1.02);
       transform: scale(1.02); }
   section.soundcloud .item {
