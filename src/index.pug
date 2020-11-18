@@ -6,16 +6,16 @@ html(lang='en')
         //- font
         link(href="https://fonts.googleapis.com/css?family=Rubik:400", rel="stylesheet")
         //- css
-        link(rel="stylesheet" type="text/css" href="global.css")
+        link(rel="stylesheet" type="text/css" href="global.sass")
         //- mobile fix
         meta(name="viewport" content="width=device-width")
         //- favicon
-        link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png?v=QEJrjJyAKx")
-        link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png?v=QEJrjJyAKx")
-        link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png?v=QEJrjJyAKx")
-        link(rel="manifest", href="/site.webmanifest?v=QEJrjJyAKx")
-        link(rel="mask-icon", href="/safari-pinned-tab.svg?v=QEJrjJyAKx", color="#3f3f3f")
-        link(rel="shortcut icon", href="/favicon.ico?v=QEJrjJyAKx")
+        link(rel="apple-touch-icon", sizes="180x180", href="./favicon/apple-touch-icon.png?v=QEJrjJyAKx")
+        link(rel="icon", type="image/png", sizes="32x32", href="./favicon/favicon-32x32.png?v=QEJrjJyAKx")
+        link(rel="icon", type="image/png", sizes="16x16", href="./favicon/favicon-16x16.png?v=QEJrjJyAKx")
+        link(rel="manifest", href="./favicon/site.webmanifest?v=QEJrjJyAKx")
+        link(rel="mask-icon", href="./favicon/safari-pinned-tab.svg?v=QEJrjJyAKx", color="#3f3f3f")
+        link(rel="shortcut icon", href="./favicon/favicon.ico?v=QEJrjJyAKx")
         meta(name="msapplication-TileColor", content="#ffffff")
         meta(name="theme-color", content="#ffffff")
     body
@@ -85,9 +85,6 @@ html(lang='en')
                                 include static/svg logos/github.svg
             a.see-more(target="_blank" rel="noopener noreferrer" href="https://github.com/probablykasper")
                 p See more
-        //- script
-        //-     include global.js
-        script(src="js/global.js")
-        script(src='lib/three.min.js')
-        script(src="js/canvas-renderer-and-projector.min.js")
-        script(src="js/bg.js")
+        script(src="./js/global.js")
+        script(src="./js/canvas-renderer-and-projector.js")
+        script(src="./js/bg.js")

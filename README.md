@@ -3,13 +3,11 @@ v4 of my personal website. It uses the [YouTube Data API](https://developers.goo
 
 ![Screenshot](https://raw.githubusercontent.com/probablykasper/v4.kasper.space/master/Screenshot.png)
 
-# Dev Instructions
+## Dev Instructions
 1. Install Node.js 8 (I recommend installing it using a version manager like [fnm](https://github.com/Schniz/fnm))
-2. Run `npm install gulp-cli -g` to install dependencies
 3. Run `npm install` to install dependencies
 
-- `gulp`: Same as `gulp watch server`.
-- `gulp build`: Deletes `/build`, compiles all pug/sass/js in `/src` except for `/src/lib`, copies everything else from `/src` into `/build`, autoprefixes css, adds sourcemaps to css/js.
-- `gulp watch`: Build and watch for changes.
-- `gulp server`: Starts dev server on localhost:3000.
-- `gulp deploy`: Build and deploy to GitHub Pages (/docs folder)
+### Commands
+- `npm run dev`: Start dev server at `localhost:1234`
+- `npm run build`: Build into `dist`
+- `npm run deploy`: Build into `docs`, for deployment

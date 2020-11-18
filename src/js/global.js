@@ -101,7 +101,9 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
 })();
 
 (function Lacuna () {
-  var maxResults = 8
+  // For example if you specify 10 maxResults, SoundCloud will only respond
+  // with 4 if 6 of them are private
+  var maxResults = 50
   
   // Lacuna
   var clientID = '6ibYZTmF5qnpvp88S9V3werVrC18WCdC'
@@ -130,25 +132,25 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
 (function GitHub () {
   // this is so babel won't combine the two string into one, and
   // make GitHub revoke the token when it detects it in the commit
-  let token = '510127accaf075e7a33b'
-  if (true) token += '04e4569c7e2f78c83539'
+  let token = 'fa60366a80de06de31e5'
+  if (true) token += 'fd3650a203a9b40d625e'
   fetch('https://api.github.com/graphql', {
     body: JSON.stringify({
       query: `
-          query {
-              user(login: "probablykasper") {
-              pinnedRepositories(first:6) {
-                  edges {
-                  node {
-                      description
-                      homepageUrl
-                      url
-                      name
-                  }
-                  }
+        query {
+          user(login: "probablykasper") {
+            pinnedItems(first:6, types:REPOSITORY) {
+              nodes {
+                ... on Repository {
+                  description
+                  homepageUrl
+                  url
+                  name
+                }
               }
-              }
+            }
           }
+        }
       `
     }),
     headers: {
@@ -163,11 +165,12 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
     })
     .then((response) => {
       response.json().then((result) => {
+        if (result.errors) return console.error('github api error', result.errors)
         console.log('==--==--==--> GitHub')
         console.log(result.data)
-        const repos = result.data.user.pinnedRepositories.edges
+        const repos = result.data.user.pinnedItems.nodes
         for (var i = 0; i < repos.length; i++) {
-          const repo = repos[i].node
+          const repo = repos[i]
           const description = repo.description
           const repoWebsite = repo.homepageUrl
           const name = repo.name

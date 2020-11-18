@@ -1,4 +1,4 @@
-// minOnSave: true, minifier: uglify-js
+const THREE = require('./canvas-renderer-and-projector').THREE;
 var canvasHeight = 400;
 var SEPARATION = 100;
 var AMOUNTX = 80;

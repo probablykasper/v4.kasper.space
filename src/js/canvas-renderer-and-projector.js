@@ -1,4 +1,6 @@
-// minOnSave: true, minifier: uglify-js
+const THREE = require('../lib/three.min');
+module.exports.THREE = THREE;
+
 var bgColor = 0xffffff
 /**
  * @author mrdoob / http://mrdoob.com/
