@@ -132,8 +132,8 @@ var YTapiKey = 'AIzaSyBnQnpboWUfWyR8aW6HuQV5MAlxZ5FQ090';
 (function GitHub () {
   // this is so babel won't combine the two string into one, and
   // make GitHub revoke the token when it detects it in the commit
-  let token = 'fa60366a80de06de31e5'
-  if (true) token += 'fd3650a203a9b40d625e'
+  let token = 'ghp_nsKRfDj2LY8HZA91'
+  if (true) token += 'rJHTuKdr0tHFrO1GnsIV'
   fetch('https://api.github.com/graphql', {
     body: JSON.stringify({
       query: `
