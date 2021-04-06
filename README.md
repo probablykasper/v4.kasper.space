@@ -5,7 +5,7 @@ v4 of my personal website. It uses the [YouTube Data API](https://developers.goo
 
 ## Dev Instructions
 1. Install Node.js 8 (I recommend installing it using a version manager like [fnm](https://github.com/Schniz/fnm))
-3. Run `npm install` to install dependencies
+2. Run `npm install` to install dependencies
 
 ### Commands
 - `npm run dev`: Start dev server at `localhost:1234`
