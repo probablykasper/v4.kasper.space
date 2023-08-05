@@ -25,9 +25,6 @@
 	let particle: Mesh
 
 	let show = false
-	setTimeout(function () {
-		show = true
-	}, 250)
 
 	function getCanvasContainerWidth() {
 		return container?.clientWidth || window.innerWidth
@@ -62,6 +59,7 @@
 		renderer.setSize(getCanvasContainerWidth(), canvasHeight)
 		container.appendChild(renderer.domElement)
 
+		show = true
 		requestAnimationFrame(step)
 	})
 
@@ -115,7 +113,6 @@
 		width: 100%
 		transform: rotate(180deg)
 		transition: $transition-100 opacity
-		display: flex
 		&.hidden
 			opacity: 0
 </style>
