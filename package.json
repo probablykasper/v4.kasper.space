@@ -1,14 +1,40 @@
 {
-  "name": "kasp.io",
-  "main": "index.js",
-  "scripts": {
-    "dev": "parcel src/index.pug",
-    "build": "parcel build src/index.pug",
-    "deploy": "parcel build src/index.pug --out-dir docs"
-  },
-  "devDependencies": {
-    "parcel-bundler": "^1.12.5",
-    "pug": "^3.0.2",
-    "sass": "^1.32.8"
-  }
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"lint": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json && eslint src && prettier --check src",
+		"format": "eslint --fix src && prettier --write src"
+	},
+	"devDependencies": {
+		"@octokit/graphql": "^7.0.1",
+		"@sveltejs/adapter-static": "^2.0.3",
+		"@sveltejs/kit": "^1.22.4",
+		"@types/three": "^0.98.0",
+		"@typescript-eslint/eslint-plugin": "^6.2.1",
+		"@typescript-eslint/parser": "^6.2.1",
+		"eslint": "^8.46.0",
+		"eslint-config-prettier": "^8.10.0",
+		"eslint-plugin-svelte": "^2.32.4",
+		"fast-xml-parser": "^4.2.7",
+		"prettier": "^3.0.1",
+		"prettier-plugin-svelte": "^3.0.3",
+		"sass": "^1.64.2",
+		"svelte": "^4.1.2",
+		"svelte-check": "^3.4.6",
+		"three": "^0.98.0",
+		"typescript": "^5.1.6",
+		"vite": "^4.4.8"
+	},
+	"prettier": {
+		"useTabs": true,
+		"printWidth": 100,
+		"semi": false,
+		"singleQuote": true,
+		"plugins": [
+			"prettier-plugin-svelte"
+		]
+	}
 }
