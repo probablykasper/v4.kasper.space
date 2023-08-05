@@ -1,0 +1,11 @@
+name: Readme Template
+on:
+  schedule:
+    - cron: '0 0 1/7 * *' # every 7 days
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call deploy hook
+        run: curl -X POST "${{ secrets.DEPLOY_HOOK }}"

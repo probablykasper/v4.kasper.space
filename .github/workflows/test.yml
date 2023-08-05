@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      PUBLIC_EMAIL: ${{ secrets.PUBLIC_EMAIL }}
+      PUBLIC_EMAIL: example@example.com
       PERSONAL_GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
     steps:
       - name: Checkout repository
