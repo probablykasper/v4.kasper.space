@@ -1,4 +1,4 @@
-name: Readme Template
+name: Periodic deploy
 on:
   schedule:
     - cron: '0 0 1/7 * *' # every 7 days
