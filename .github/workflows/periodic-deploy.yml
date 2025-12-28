@@ -1,7 +1,7 @@
 name: Periodic deploy
 on:
   schedule:
-    - cron: '0 0 1/7 * *' # every 7 days
+    - cron: '0 0 1/30 * *' # every 30 days
   workflow_dispatch:
 jobs:
   publish:

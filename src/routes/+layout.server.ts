@@ -18,6 +18,10 @@ async function video_section() {
 			}[]
 		}
 	} = parser.parse(text)
+	if (!response.ok) {
+		console.error('500 response xml', JSON.stringify(xml, null, 2))
+		throw new Error()
+	}
 	return xml.feed.entry.map((entry) => ({
 		title: entry.title,
 		id: entry['yt:videoId'],
@@ -38,6 +42,10 @@ async function shrive_section() {
 			}[]
 		}
 	} = parser.parse(text)
+	if (!response.ok) {
+		console.error('500 response xml', JSON.stringify(xml, null, 2))
+		throw new Error()
+	}
 	return xml.feed.entry.map((entry) => ({
 		title: entry.title,
 		id: entry['yt:videoId'],
